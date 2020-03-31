@@ -20,5 +20,5 @@ Creando seeders: Insertando datos de prueba en una base de datos.
 Creando models: Son los modelos que manejaremos en php para realizar consultas y relaciones. 
 
 ```
-> php artisan make:model Nombre
+> php artisan make:model Models/Nombre
 ```
