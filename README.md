@@ -44,3 +44,10 @@ Migrar todos los modelos a la base de datos
 ```
 > php artisan migrate
 ```
+
+Creamos request: Son las resonsables de manejar los formularios, aqui programaremos toda la logia para un store o un update. 
+
+```
+> php artisan make:request Nombre<Accion>Request
+> // Acciones : Create | Update 
+```
