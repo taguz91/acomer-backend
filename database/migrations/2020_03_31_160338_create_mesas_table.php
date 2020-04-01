@@ -3,9 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\DB;
 
-class CreateHistorialUsuariosTable extends Migration
+class CreateMesasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +13,11 @@ class CreateHistorialUsuariosTable extends Migration
      */
     public function up()
     {
-        Schema::create('historial_usuarios', function (Blueprint $table) {
+        Schema::create('mesas', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_usuario');
-            $table->string('accion');
-            $table->timestamp('fecha')->default(DB::raw('CURRENT_TIMESTAMP(0)'));
+            $table->integer('numero');
+            $table->integer('capacidad');
+            $table->string('descripcion');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +30,6 @@ class CreateHistorialUsuariosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('historial_usuarios');
+        Schema::dropIfExists('mesas');
     }
 }

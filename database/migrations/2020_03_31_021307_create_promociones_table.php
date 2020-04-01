@@ -16,8 +16,8 @@ class CreatePromocionesTable extends Migration
         Schema::create('promociones', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_fk');
-            $table->timestamps('fecha_inicio')->default(time());
-            $table->timestamps('fecha_fin')->default(time());
+            $table->timestamp('fecha_inicio');
+            $table->timestamp('fecha_fin');
             $table->double('precio', 10, 2);
             $table->integer('descuento');
             $table->json('extra');

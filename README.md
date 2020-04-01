@@ -39,3 +39,8 @@ Definir solo rutas para api:
 ```php
 Route::apiResource('', '');
 ```
+
+Migrar todos los modelos a la base de datos  
+```
+> php artisan migrate
+```

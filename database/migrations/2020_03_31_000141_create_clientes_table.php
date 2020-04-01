@@ -20,7 +20,7 @@ class CreateClientesTable extends Migration
             $table->string('identificacion', 20);
             $table->string('telefono', 20);
             $table->integer('numero_compras');
-            $table->timestamp('ultima_compra')->default(time());
+            $table->timestamp('ultima_compra');
             $table->double('total_consumos', 10, 2);
             $table->timestamps();
             $table->softDeletes();
