@@ -22,3 +22,20 @@ Creando models: Son los modelos que manejaremos en php para realizar consultas y
 ```
 > php artisan make:model Models/Nombre
 ```
+
+Creando los controllers: Nos serviran para las peticiones realizadas en los servicios. 
+
+```
+> php artisan make:controller api/v1/NombreController --resource
+```
+
+Creando un resources: Estos nos funcionan para mapear en un JSON el objeto. 
+```
+> php artisan make:resource NombreResource 
+```
+
+Definir solo rutas para api: 
+
+```php
+Route::apiResource('', '');
+```
