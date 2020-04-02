@@ -51,3 +51,24 @@ Creamos request: Son las resonsables de manejar los formularios, aqui programare
 > php artisan make:request Nombre<Accion>Request
 > // Acciones : Create | Update 
 ```
+
+### Ejemplos 
+
+Una buen ejemplo del poder de Eloquent 
+```php
+$users = User::select([
+    'users.*',
+    'last_posted_at' => Post::selectRaw('MAX(created_at)')
+            ->whereColumn('user_id', 'users.id')
+])->withCasts([
+    'last_posted_at' => 'date'
+])->get();
+```
+
+Cast para ser usados en las respuestas JSON esto se le agrega en el modelo. 
+```php
+protected $casts = [
+    'birthday' => 'date:Y-m-d',
+    'joined_at' => 'datetime:Y-m-d H:00',
+];
+```
