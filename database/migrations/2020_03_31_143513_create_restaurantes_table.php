@@ -18,7 +18,7 @@ class CreateRestaurantesTable extends Migration
             $table->string('nombre_comercial',50);
             $table->string('nombre_fiscal',50);
             $table->timestamp('inicio_suscripcion');
-            $table->timestamp('utlimo_pago');
+            $table->timestamp('ultimo_pago');
             $table->timestamp('fecha_proximo_pago');
             $table->timestamps();
             $table->softDeletes();
