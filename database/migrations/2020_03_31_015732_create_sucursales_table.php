@@ -17,7 +17,7 @@ class CreateSucursalesTable extends Migration
             $table->id();
             $table->bigInteger('id_restaurante');
             $table->json('horario_atencion');
-            $table->string('numero');
+            $table->integer('numero');
             $table->string('direccion');
             $table->double('latitud');
             $table->double('longitud');
