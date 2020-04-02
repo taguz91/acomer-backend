@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Encabezado_Factura extends Model
+class EncabezadoFactura extends Model
 {
     protected $table = 'encabezado_facturas';
 
