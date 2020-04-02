@@ -1,24 +1,5 @@
 <?php
 
-use MenuSeeder;
-use MesaSeeder;
-use ComboSeeder;
-use PlatoSeeder;
-use PedidoSeeder;
-use ClienteSeeder;
-use MenuDiaSeeder;
-use ReporteSeeder;
-use UsuarioSeeder;
-use EmpleadoSeeder;
-use FavoritoSeeder;
-use SucursalSeeder;
-use CategoriaSeeder;
-use PromocionSeeder;
-use SugerenciaSeeder;
-use RestauranteSeeder;
-use CalificacionSeeder;
-use EncabezadoFacturaSeeder;
-use HistorialUsuariosSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
