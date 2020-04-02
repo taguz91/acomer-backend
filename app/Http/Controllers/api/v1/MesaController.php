@@ -4,10 +4,9 @@ namespace App\Http\Controllers\api\v1;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Reporte;
+use App\Models\Mesa;
 
-
-class ReporteController extends Controller
+class MesaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,7 @@ class ReporteController extends Controller
      */
     public function index()
     {
-        return Reporte::all(); 
+        return Mesa::all();
     }
 
     /**
@@ -25,8 +24,6 @@ class ReporteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
-     
     public function store(Request $request)
     {
         //
@@ -38,11 +35,9 @@ class ReporteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-
-
     public function show($id)
     {
-        return Reporte::find($id);
+        //
     }
 
     /**
@@ -54,7 +49,7 @@ class ReporteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        //
     }
 
     /**

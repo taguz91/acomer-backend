@@ -14,4 +14,8 @@ class Pedido extends Model
         'platos',
         'notas'
     ];
+
+    public function getNotasAttribute($value){
+        return json_decode($value,true);
+    }
 }
