@@ -57,6 +57,12 @@ Creamos factories: Estos nos ayudaran a poblar nuestra base de datos, generando 
 > php artisan make:factory NombreFactory 
 ```
 
+Ejecutamos los seeders, para poblar nuestra bd. 
+```
+> php artisan migrate:refresh 
+> php artisa db:seed 
+``` 
+
 ### Ejemplos 
 
 Una buen ejemplo del poder de Eloquent 

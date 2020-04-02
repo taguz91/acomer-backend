@@ -14,6 +14,6 @@ $factory->define(EncabezadoFactura::class, function (Faker $faker) {
         'nombre' => $faker->name,
         'direccion' => $faker->address,
         'telefono' => $faker->phoneNumber,
-        'identifiacion' => $faker->creditCardNumber
+        'identificacion' => $faker->creditCardNumber
     ];
 });
