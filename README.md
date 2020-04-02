@@ -52,6 +52,11 @@ Creamos request: Son las resonsables de manejar los formularios, aqui programare
 > // Acciones : Create | Update 
 ```
 
+Creamos factories: Estos nos ayudaran a poblar nuestra base de datos, generando datos de prueba. 
+```
+> php artisan make:factory NombreFactory 
+```
+
 ### Ejemplos 
 
 Una buen ejemplo del poder de Eloquent 
@@ -71,4 +76,9 @@ protected $casts = [
     'birthday' => 'date:Y-m-d',
     'joined_at' => 'datetime:Y-m-d H:00',
 ];
+```
+
+Ejemplo de una foreignkey. 
+```php
+$table->foreign('profession_id')->references('id')->on('professions');
 ```
