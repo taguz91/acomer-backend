@@ -28,5 +28,6 @@ Route::namespace('api\v1')->group(function () {
         Route::apiResource('reserva', 'ReservaController');
         Route::apiResource('sugerencia', 'SugerenciaController');
         Route::apiResource('restaurante', 'RestauranteController');
+        Route::apiResource('reporte','ReporteController');
     });
 });
