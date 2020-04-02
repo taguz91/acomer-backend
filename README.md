@@ -60,6 +60,7 @@ Creamos factories: Estos nos ayudaran a poblar nuestra base de datos, generando 
 Ejecutamos los seeders, para poblar nuestra bd. 
 ```
 > php artisan migrate:refresh 
+> composer dump-autoload
 > php artisa db:seed 
 ``` 
 
