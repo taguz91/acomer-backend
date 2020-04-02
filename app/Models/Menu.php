@@ -11,5 +11,15 @@ class Menu extends Model
     protected $fillable = [
         'menu'
     ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
+
+    public function getMenuAttribute($value) {
+        return json_decode($value, true);
+    }
     
 }
