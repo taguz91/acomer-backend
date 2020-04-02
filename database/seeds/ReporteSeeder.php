@@ -14,3 +14,8 @@ class ReporteSeeder extends Seeder
         factory(App\Models\Reporte::class,150)->create();
     }
 }
+
+#php artisan db:seed este no funciona
+
+#php artisan db:seed --class=ReporteSeeder este si funciona
+

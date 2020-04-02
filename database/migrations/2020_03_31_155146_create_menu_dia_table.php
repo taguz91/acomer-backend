@@ -17,7 +17,7 @@ class CreateMenuDiaTable extends Migration
             $table->id();
             $table->json('menu_dia');
             $table->timestamp('fecha_inicio');
-            $table->timestamp('fecha-fin');
+            $table->timestamp('fecha_fin');
             $table->timestamps();
             $table->softDeletes();
         });
