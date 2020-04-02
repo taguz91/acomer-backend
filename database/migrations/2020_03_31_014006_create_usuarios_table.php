@@ -18,8 +18,8 @@ class CreateUsuariosTable extends Migration
             $table->string('nombre', 50);
             $table->string('clave', 50);
             $table->string('correo', 50);
-            $table->timestamp('ultimo_login')->default(time());
-            $table->timestamp('ultimo_cambio_clave')->default(time());
+            $table->timestamp('ultimo_login');
+            $table->timestamp('ultimo_cambio_clave');
             $table->integer('intentos_login');
             $table->integer('numero_logins');
             $table->timestamps();

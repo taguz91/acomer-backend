@@ -16,7 +16,7 @@ class CreateSugerenciasTable extends Migration
         Schema::create('sugerencias', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_cliente');
-            $table->text('sugerencias');
+            $table->text('sugerencia');
             $table->timestamps();
             $table->softDeletes();
         });

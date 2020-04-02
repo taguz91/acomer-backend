@@ -18,7 +18,7 @@ class CreateEncabezadoFacturasTable extends Migration
             $table->bigInteger('id_cliente');
             $table->bigInteger('id_pedido');
             $table->double('total', 10, 2);
-            $table->timestamp('fecha')->default(time());
+            $table->timestamp('fecha');
             $table->string('nombre', 50);
             $table->string('direccion', 50);
             $table->string('telefono', 50);

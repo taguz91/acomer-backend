@@ -8,5 +8,7 @@ class Administrador extends Model
 {
     
     protected $table = 'administradores';
+
+    protected $fillable = [];
     
 }
