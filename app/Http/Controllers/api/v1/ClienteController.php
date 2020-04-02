@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\api\v1;
 
-use App\Http\Controllers\Controller;
+use App\Models\Cliente;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ClienteController extends Controller
 {
@@ -14,7 +15,13 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        //
+        return Cliente::select([
+            'id',
+            'nombre',
+            'apellido',
+            'extra' => Cliente::selectRaw('MAX(created_at)')
+                ->whereColumn('id', 'clientes.id')
+        ])->get();
     }
 
     /**
