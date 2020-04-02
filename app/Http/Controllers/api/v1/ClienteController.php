@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Cliente\ClienteCreateRequest;
 
 class ClienteController extends Controller
 {
@@ -30,9 +31,9 @@ class ClienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClienteCreateRequest $request)
     {
-        //
+        
     }
 
     /**
@@ -53,7 +54,7 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ClienteCreateRequest $request, $id)
     {
         //
     }
