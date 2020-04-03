@@ -2,7 +2,11 @@
 
 namespace App\Http\Requests\Reporte;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class ReporteCreateRequest extends FormRequest
 {
@@ -13,18 +17,47 @@ class ReporteCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
+    
     public function rules()
     {
         return [
-            //
+           
+            'nombre' => 'required|max=50|min=15'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'nombre.required' => 'El :attribute es obligatorio',
+           
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'nombre' => 'Nombre Del Reporte',
+        ];
+    }
+
+    public function filters(){
+        return [
+            'nombre' => 'trim|capitalize|escape'
+        ];
+    }
+
+    protected function failedValidation(Validator $validator){
+        $errors = (new ValidationException($validator))->errors();
+        throw new HttpResponseException(
+            response()->json(
+                ['errores' => $errors], 
+                JsonResponse::HTTP_UNPROCESSABLE_ENTITY
+            )
+        );
+    }
+    
 }

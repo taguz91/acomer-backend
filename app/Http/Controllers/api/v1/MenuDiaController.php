@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\MenuDia;
+use App\Http\Requests\MenuDia\MenuDiaCreateRequest;
 
 class MenuDiaController extends Controller
 {
@@ -24,7 +25,7 @@ class MenuDiaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MenuDiaCreateRequest $request)
     {
         //
     }

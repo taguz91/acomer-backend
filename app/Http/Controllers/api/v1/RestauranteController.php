@@ -28,7 +28,7 @@ class RestauranteController extends Controller
     public function store(RestauranteCreateRequest $request)
 
     {
-        return Restaurante::all();
+        
     }
 
     /**

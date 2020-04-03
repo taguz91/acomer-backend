@@ -2,7 +2,11 @@
 
 namespace App\Http\Requests\Categoria;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class CategoriaCreateRequest extends FormRequest
 {
@@ -13,7 +17,7 @@ class CategoriaCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +25,45 @@ class CategoriaCreateRequest extends FormRequest
      *
      * @return array
      */
+  
     public function rules()
     {
         return [
-            //
+           
+            'nombre' => 'required|max=50|min=15',
+            'numero_platos' => 'required'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'nombre.required' => 'El :attribute es obligatorio',
+            'numero_platos.required' => 'El :attribute es obligatorio',
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'nombre' => 'Nombre Categoria',
+        ];
+    }
+
+    public function filters(){
+        return [
+            'nombre' => 'trim|capitalize|escape'
+        ];
+    }
+
+    protected function failedValidation(Validator $validator){
+        $errors = (new ValidationException($validator))->errors();
+        throw new HttpResponseException(
+            response()->json(
+                ['errores' => $errors], 
+                JsonResponse::HTTP_UNPROCESSABLE_ENTITY
+            )
+        );
+    }
+    
 }

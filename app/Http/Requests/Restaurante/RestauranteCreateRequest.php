@@ -2,8 +2,13 @@
 
 namespace App\Http\Requests\Restaurante;
 
-use Dotenv\Exception\ValidationException;
+
+use Illuminate\Http\JsonResponse;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Http\Exceptions\HttpResponseException;
+
 
 class RestauranteCreateRequest extends FormRequest
 {
@@ -55,6 +60,14 @@ class RestauranteCreateRequest extends FormRequest
         ];
     }
 
-  
+    protected function failedValidation(Validator $validator){
+        $errors = (new ValidationException($validator))->errors();
+        throw new HttpResponseException(
+            response()->json(
+                ['errores' => $errors], 
+                JsonResponse::HTTP_UNPROCESSABLE_ENTITY
+            )
+        );
+    }
     
 }

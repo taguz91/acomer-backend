@@ -5,7 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use App\Http\Controllers\Controller;
 use App\Models\Calificacion;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\Calificacion\CalificacionCreateRequest;
 class CalificacionController extends Controller
 {
     /**
@@ -24,7 +24,7 @@ class CalificacionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CalificacionCreateRequest $request)
     {
         //
     }
