@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Favorito::class, function (Faker $faker) {
     return [
-        'id_plato' => $faker->randomDigit,
-        'id_cliente' => $faker->randomDigit
+        'id_plato' => $faker->numberBetween(1, 500),
+        'id_cliente' => $faker->numberBetween(1, 500),
     ];
 });

@@ -15,4 +15,10 @@ class Usuario extends Model
         'intentos_login',
         'numero_logins',
     ];
+
+    public function historial()
+    {
+        return $this->hasMany('App\Models\HistorialUsuario', 'id_usuario');
+    }
+
 }

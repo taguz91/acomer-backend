@@ -10,6 +10,6 @@ class CalificacionSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\Calificacion::class, 150)->create();
+        factory(App\Models\Calificacion::class, 500)->create();
     }
 }

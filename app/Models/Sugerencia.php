@@ -13,4 +13,9 @@ class Sugerencia extends Model
         'sugerencia'
     ];
 
+    public function cliente()
+    {
+        return $this->belongsTo('App\Models\Cliente', 'id_cliente');
+    }
+
 }

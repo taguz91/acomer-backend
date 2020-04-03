@@ -15,6 +15,7 @@ class CreateCombosTable extends Migration
     {
         Schema::create('combos', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('id_restaurante');
             $table->json('id_platos');
             $table->double('precio_final', 10, 2);
             $table->json('extra');

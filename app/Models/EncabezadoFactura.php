@@ -17,4 +17,19 @@ class EncabezadoFactura extends Model
         'telefono',
         'identificacion',
     ];
+
+    public function restaurante(){
+        return $this->belongsTo('App\Models\Restaurante', 'id_restaurante');
+    }
+
+    public function cliente()
+    {
+        return $this->belongsTo('App\Models\Cliente', 'id_cliente');
+    }
+
+    public function pedido()
+    {
+        return $this->belongsTo('App\Models\Pedido', 'id_pedido');
+    }
+    
 }

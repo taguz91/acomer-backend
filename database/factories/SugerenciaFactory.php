@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Sugerencia::class, function (Faker $faker) {
     return [
-        'id_cliente' => $faker->numberBetween(1, 1000),
+        'id_cliente' => $faker->numberBetween(1, 500),
         'sugerencia' => $faker->sentence
     ];
 });

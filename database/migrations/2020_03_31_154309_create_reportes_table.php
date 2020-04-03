@@ -15,6 +15,7 @@ class CreateReportesTable extends Migration
     {
         Schema::create('reportes', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('id_restaurante');
             $table->json('reporte');
             $table->timestamp('fecha');
             $table->string('nombre');

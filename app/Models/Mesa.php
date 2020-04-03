@@ -13,4 +13,18 @@ class Mesa extends Model
         'capacidad',
         'descripcion'
     ];
+
+    public function restaurante(){
+        return $this->belongsTo('App\Models\Restaurante', 'id_restaurante');
+    }
+    
+    public function reservas()
+    {
+        return $this->hasMany('App\Models\Reserva', 'id_reserva');
+    }
+
+    public function pedidos()
+    {
+        return $this->hasMany('App\Models\Pedido', 'id_mesa');
+    }
 }

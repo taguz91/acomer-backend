@@ -28,10 +28,10 @@ class ClienteCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => 'required|max:50|min:3',
-            'apellido' => 'required|max:50|min:3',
-            'identificacion' => 'required|max:20|min:8',
-            'telefono' => 'required|max:20|min:7'
+            'nombre' => 'required|max:50|min:3|string',
+            'apellido' => 'required|max:50|min:3|string',
+            'identificacion' => 'required|max:20|min:8|string',
+            'telefono' => 'required|max:20|min:7|numeric'
         ];
     }
 
@@ -66,7 +66,9 @@ class ClienteCreateRequest extends FormRequest
         $errors = (new ValidationException($validator))->errors();
         throw new HttpResponseException(
             response()->json(
-                ['errores' => $errors], 
+                [
+                    'errores' => $errors
+                ],
                 JsonResponse::HTTP_UNPROCESSABLE_ENTITY
             )
         );

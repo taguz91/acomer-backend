@@ -15,6 +15,7 @@ class CreatePromocionesTable extends Migration
     {
         Schema::create('promociones', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('id_restaurante');
             $table->bigInteger('id_fk');
             $table->timestamp('fecha_inicio');
             $table->timestamp('fecha_fin');

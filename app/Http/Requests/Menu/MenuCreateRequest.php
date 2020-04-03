@@ -2,7 +2,11 @@
 
 namespace App\Http\Requests\Menu;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class MenuCreateRequest extends FormRequest
 {
@@ -24,7 +28,27 @@ class MenuCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id_restaurante' => 'required|integer',
+            'menu' => 'required|json'
         ];
     }
+
+    public function messages() {
+        return [
+            'id_restaurante.required' => 'El id del restaurante es obligatorio.',
+        ];
+    }
+
+    protected function failedValidation(Validator $validator){
+        $errors = (new ValidationException($validator))->errors();
+        throw new HttpResponseException(
+            response()->json(
+                [
+                    'errores' => $errors
+                ],
+                JsonResponse::HTTP_UNPROCESSABLE_ENTITY
+            )
+        );
+    }
+
 }

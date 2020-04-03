@@ -16,4 +16,13 @@ class Reserva extends Model
         'codigo_qr'
     ];
 
+    public function restaurante(){
+        return $this->belongsTo('App\Models\Restaurante', 'id_restaurante');
+    }
+
+    public function mesa()
+    {
+        return $this->belongsTo('App\Models\Mesa', 'id_mesa');
+    }
+
 }

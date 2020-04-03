@@ -13,4 +13,14 @@ class Combo extends Model
         'precio_final',
         'extra'
     ];
+
+    public function restaurante(){
+        return $this->belongsTo('App\Models\Restaurante', 'id_restaurante');
+    }
+    
+    public function calificaciones()
+    {
+        return $this->morphMany('App\Models\Calificacion', 'calificado');
+    }
+    
 }

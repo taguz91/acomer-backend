@@ -33,7 +33,10 @@ class ClienteController extends Controller
      */
     public function store(ClienteCreateRequest $request)
     {
-        
+        return [
+            'message' => 'Guardado',
+            'data' => $request->all()
+        ];
     }
 
     /**

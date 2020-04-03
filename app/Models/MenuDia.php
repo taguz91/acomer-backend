@@ -14,6 +14,11 @@ class MenuDia extends Model
     ];
 
     public function getMenuDiaAttribute($value){
-        return json_decode($value,true);
+        return json_decode($value, true);
     }
+
+    public function restaurante(){
+        return $this->belongsTo('App\Models\Restaurante', 'id_restaurante');
+    }
+
 }

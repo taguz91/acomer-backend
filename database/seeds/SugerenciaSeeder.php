@@ -12,6 +12,6 @@ class SugerenciaSeeder extends Seeder
      */
     public function run()
     {
-        factory(Sugerencia::class, 150)->create();
+        factory(Sugerencia::class, 500)->create();
     }
 }

@@ -12,4 +12,14 @@ class Favorito extends Model
         'id_plato',
         'id_cliente', 
     ];
+
+    public function plato()
+    {
+        return $this->belongsTo('App\Models\Plato', 'id_plato');
+    }
+
+    public function cliente()
+    {
+        return $this->belongsTo('App\Models\Cliente', 'id_cliente');
+    }
 }

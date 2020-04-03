@@ -12,6 +12,6 @@ class ComboSeeder extends Seeder
      */
     public function run()
     {
-        factory(Combo::class, 200)->create();
+        factory(Combo::class, 500)->create();
     }
 }
