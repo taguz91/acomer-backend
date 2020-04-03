@@ -1,7 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Restaurante;
-
+namespace App\Http\Requests\MenuDia;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Foundation\Http\FormRequest;
@@ -9,8 +8,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-
-class RestauranteCreateRequest extends FormRequest
+class MenuDiaCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,38 +25,35 @@ class RestauranteCreateRequest extends FormRequest
      *
      * @return array
      */
-
-     
     public function rules()
     {
         return [
-            'nombre_comercial' => 'required|max=50|min=15',
-            'nombre_fiscal' => 'required|max=50|min=15'
+           
+            'menu_dia' => 'required',
+       
         ];
     }
 
     public function messages()
     {
         return [
-            'nombre_comercial.required' => 'El :attribute es obligatorio',
-            'nombre_fiscal.required'=> 'El :attribute es obligatorio'
+            'menu_dia.required' => 'El :attribute es obligatorio',
         ];
     }
 
     public function attributes()
     {
         return [
-            'nombre_comercial' => 'Nombre Comercial',
-            'nombre_fiscal' => 'Nombre Fiscal'
+            'menu_dia' => 'Menu del Dia',
         ];
     }
 
-    public function filters(){
-        return [
-            'nombre_comercial' => 'trim|capitalize|escape',
-            'nombre_fiscal' => 'trim|capitalize|escape'
-        ];
-    }
+    
+    // public function filters(){
+    //     return [
+    //         'menu_dia' => 'trim'
+    //     ];
+    // }
 
     protected function failedValidation(Validator $validator){
         $errors = (new ValidationException($validator))->errors();
@@ -69,5 +64,4 @@ class RestauranteCreateRequest extends FormRequest
             )
         );
     }
-    
 }

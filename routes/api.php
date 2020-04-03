@@ -34,5 +34,12 @@ Route::namespace('api\v1')->group(function () {
         Route::apiResource('pedido','PedidoController');
         Route::apiResource('menudia','MenuDiaController');
         Route::apiResource('mesa','MesaController');
+        Route::apiResource('usuario', 'UsuarioController');
+        Route::apiResource('empleado', 'EmpleadoController');
+        Route::apiResource('sucursal', 'SucursalController');
+        Route::apiResource('favorito', 'FavoritoController');
+        Route::apiResource('plato', 'PlatoController');
+        Route::apiResource('encabezado/factura', 'EncabezadoFacturaController');
+        Route::apiResource('promocion', 'PromocionController');
     });
 });

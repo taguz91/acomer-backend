@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Reporte;
+use App\Http\Requests\Reporte\ReporteCreateRequest;
 
 
 class ReporteController extends Controller
@@ -27,7 +28,7 @@ class ReporteController extends Controller
      */
 
      
-    public function store(Request $request)
+    public function store(ReporteCreateRequest $request)
     {
         //
     }

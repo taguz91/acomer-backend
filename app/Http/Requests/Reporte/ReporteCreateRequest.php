@@ -1,7 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Restaurante;
-
+namespace App\Http\Requests\Reporte;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Foundation\Http\FormRequest;
@@ -9,8 +8,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-
-class RestauranteCreateRequest extends FormRequest
+class ReporteCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,41 +20,33 @@ class RestauranteCreateRequest extends FormRequest
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-
-     
+    
     public function rules()
     {
         return [
-            'nombre_comercial' => 'required|max=50|min=15',
-            'nombre_fiscal' => 'required|max=50|min=15'
+           
+            'nombre' => 'required|max=50|min=15'
         ];
     }
 
     public function messages()
     {
         return [
-            'nombre_comercial.required' => 'El :attribute es obligatorio',
-            'nombre_fiscal.required'=> 'El :attribute es obligatorio'
+            'nombre.required' => 'El :attribute es obligatorio',
+           
         ];
     }
 
     public function attributes()
     {
         return [
-            'nombre_comercial' => 'Nombre Comercial',
-            'nombre_fiscal' => 'Nombre Fiscal'
+            'nombre' => 'Nombre Del Reporte',
         ];
     }
 
     public function filters(){
         return [
-            'nombre_comercial' => 'trim|capitalize|escape',
-            'nombre_fiscal' => 'trim|capitalize|escape'
+            'nombre' => 'trim|capitalize|escape'
         ];
     }
 

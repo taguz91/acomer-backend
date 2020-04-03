@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Categoria;
+use App\Http\Requests\Categoria\CategoriaCreateRequest;
 
 class CategoriaController extends Controller
 {
@@ -24,7 +25,7 @@ class CategoriaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoriaCreateRequest $request)
     {
         //
     }

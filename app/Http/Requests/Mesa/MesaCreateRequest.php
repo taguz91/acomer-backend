@@ -1,7 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Restaurante;
-
+namespace App\Http\Requests\Mesa;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Foundation\Http\FormRequest;
@@ -9,8 +8,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-
-class RestauranteCreateRequest extends FormRequest
+class MesaCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,36 +25,37 @@ class RestauranteCreateRequest extends FormRequest
      *
      * @return array
      */
-
-     
     public function rules()
     {
         return [
-            'nombre_comercial' => 'required|max=50|min=15',
-            'nombre_fiscal' => 'required|max=50|min=15'
+           
+           'numero' => 'required',
+           'capacidad' => 'required',
+        'descripcion'  => 'required|max=100|min=20'
         ];
     }
 
     public function messages()
     {
         return [
-            'nombre_comercial.required' => 'El :attribute es obligatorio',
-            'nombre_fiscal.required'=> 'El :attribute es obligatorio'
+            'numero.required' => 'El :attribute es obligatorio',
+            'capacidad.required' => 'El :attribute es obligatorio',
+            'descripcion.required' => 'El :attribute es obligatorio',
         ];
     }
 
     public function attributes()
     {
         return [
-            'nombre_comercial' => 'Nombre Comercial',
-            'nombre_fiscal' => 'Nombre Fiscal'
+            'numero' => 'Numero Mesa',
+            'capacidad' => 'Capacidad Mesa',
+            'descripcion' => 'Descripcion Mesa',
         ];
     }
 
     public function filters(){
         return [
-            'nombre_comercial' => 'trim|capitalize|escape',
-            'nombre_fiscal' => 'trim|capitalize|escape'
+            'descripcion' => 'trim'
         ];
     }
 
@@ -69,5 +68,4 @@ class RestauranteCreateRequest extends FormRequest
             )
         );
     }
-    
 }
