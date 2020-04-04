@@ -3,8 +3,12 @@
 namespace App\Http\Requests\Promocion;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
-class PromocionRequest extends FormRequest
+class PromocionCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
