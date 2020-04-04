@@ -15,4 +15,13 @@ class Empleado extends Model
         'id_rol',
         'foto_url',
     ];
+
+    public function restaurante(){
+        return $this->belongsTo('App\Models\Restaurante', 'id_restaurante');
+    }
+    
+    public function pedidos()
+    {
+        return $this->hasMany('App\Models\Pedido', 'id_cliente');
+    }
 }

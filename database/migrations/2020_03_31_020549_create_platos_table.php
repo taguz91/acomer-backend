@@ -15,6 +15,7 @@ class CreatePlatosTable extends Migration
     {
         Schema::create('platos', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('id_restaurante');
             $table->string('nombre', 50);
             $table->double('precio', 10, 2);
             $table->json('ingredientes');

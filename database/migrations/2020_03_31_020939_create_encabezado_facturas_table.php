@@ -15,6 +15,7 @@ class CreateEncabezadoFacturasTable extends Migration
     {
         Schema::create('encabezado_facturas', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('id_restaurante');
             $table->bigInteger('id_cliente');
             $table->bigInteger('id_pedido');
             $table->double('total', 10, 2);

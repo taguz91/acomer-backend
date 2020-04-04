@@ -30,6 +30,7 @@ $factory->define(Menu::class, function (Faker $faker) {
     }
 
     return [
+        'id_restaurante' => $faker->numberBetween(1, 500),
         'menu' => json_encode($menu)
     ];
 });

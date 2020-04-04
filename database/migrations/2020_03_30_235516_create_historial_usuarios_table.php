@@ -18,7 +18,7 @@ class CreateHistorialUsuariosTable extends Migration
             $table->id();
             $table->bigInteger('id_usuario');
             $table->string('accion');
-            $table->timestamp('fecha')->default(DB::raw('CURRENT_TIMESTAMP(0)'));
+            $table->string('plataforma');
             $table->timestamps();
             $table->softDeletes();
         });

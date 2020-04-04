@@ -15,6 +15,7 @@ class CreateEmpleadosTable extends Migration
     {
         Schema::create('empleados', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('id_restaurante');
             $table->string('nombre', 50);
             $table->string('apellido', 50);
             $table->string('identificacion', 20);

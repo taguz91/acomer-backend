@@ -7,7 +7,8 @@ use Faker\Generator as Faker;
 
 $factory->define(Promocion::class, function (Faker $faker) {
     return [
-        'id_fk' => $faker->randomDigit,
+        'id_restaurante' => $faker->numberBetween(1, 500),
+        'id_fk' => $faker->numberBetween(1, 500),
         'fecha_inicio' => $faker->dateTime,
         'fecha_fin' => $faker->dateTime,
         'precio' => $faker->randomFloat,

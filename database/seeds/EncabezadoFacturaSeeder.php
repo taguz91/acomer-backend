@@ -12,6 +12,6 @@ class EncabezadoFacturaSeeder extends Seeder
      */
     public function run()
     {
-        factory(EncabezadoFactura::class, 150)->create();
+        factory(EncabezadoFactura::class, 500)->create();
     }
 }

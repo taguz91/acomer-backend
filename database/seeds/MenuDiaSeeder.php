@@ -11,6 +11,6 @@ class MenuDiaSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\MenuDia::class,150)->create();
+        factory(App\Models\MenuDia::class, 500)->create();
     }
 }

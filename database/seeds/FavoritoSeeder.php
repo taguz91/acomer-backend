@@ -12,6 +12,6 @@ class FavoritoSeeder extends Seeder
      */
     public function run()
     {
-        factory(Favorito::class, 150)->create();
+        factory(Favorito::class, 500)->create();
     }
 }

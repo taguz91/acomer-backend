@@ -2,7 +2,13 @@
 
 namespace App\Http\Requests\Restaurante;
 
+
+use Illuminate\Http\JsonResponse;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Http\Exceptions\HttpResponseException;
+
 
 class RestauranteCreateRequest extends FormRequest
 {
@@ -13,7 +19,7 @@ class RestauranteCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +27,47 @@ class RestauranteCreateRequest extends FormRequest
      *
      * @return array
      */
+
+     
     public function rules()
     {
         return [
-            //
+            'nombre_comercial' => 'required|max=50|min=15',
+            'nombre_fiscal' => 'required|max=50|min=15'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'nombre_comercial.required' => 'El :attribute es obligatorio',
+            'nombre_fiscal.required'=> 'El :attribute es obligatorio'
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'nombre_comercial' => 'Nombre Comercial',
+            'nombre_fiscal' => 'Nombre Fiscal'
+        ];
+    }
+
+    public function filters(){
+        return [
+            'nombre_comercial' => 'trim|capitalize|escape',
+            'nombre_fiscal' => 'trim|capitalize|escape'
+        ];
+    }
+
+    protected function failedValidation(Validator $validator){
+        $errors = (new ValidationException($validator))->errors();
+        throw new HttpResponseException(
+            response()->json(
+                ['errores' => $errors], 
+                JsonResponse::HTTP_UNPROCESSABLE_ENTITY
+            )
+        );
+    }
+    
 }

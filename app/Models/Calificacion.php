@@ -14,4 +14,14 @@ class Calificacion extends Model
         'calificacion',
         'tipo_calificacion'
     ];
+
+    public function calificado() {
+        $this->morphTo();
+    }
+
+    public function usuario()
+    {
+        return $this->belongsTo('App\Models\Cliente', 'id_cliente');
+    }
+
 }

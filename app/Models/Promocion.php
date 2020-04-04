@@ -14,4 +14,9 @@ class Promocion extends Model
         'descuento',
         'extra',
     ];
+
+    public function restaurante(){
+        return $this->belongsTo('App\Models\Restaurante', 'id_restaurante');
+    }
+    
 }

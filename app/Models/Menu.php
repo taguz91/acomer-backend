@@ -21,5 +21,9 @@ class Menu extends Model
     public function getMenuAttribute($value) {
         return json_decode($value, true);
     }
+
+    public function restaurante(){
+        return $this->belongsTo('App\Models\Restaurante', 'id_restaurante');
+    }
     
 }

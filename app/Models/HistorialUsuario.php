@@ -10,6 +10,7 @@ class HistorialUsuario extends Model
 
     protected $fillable = [
         'id_usuario',
-        'accion'
+        'accion',
+        'plataforma'
     ];
 }

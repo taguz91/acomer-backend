@@ -15,7 +15,8 @@ class CreateCategoriasTable extends Migration
     {
         Schema::create('categorias', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre',50);
+            $table->bigInteger('id_restaurante');
+            $table->string('nombre', 50);
             $table->integer('numero_platos');
             $table->timestamps();
             $table->softDeletes();

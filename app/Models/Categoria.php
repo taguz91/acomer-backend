@@ -12,4 +12,9 @@ class Categoria extends Model
        'nombre',
        'numero_platos'
     ];
+
+    public function restaurante(){
+        return $this->belongsTo('App\Models\Restaurante', 'id_restaurante');
+    }
+    
 }

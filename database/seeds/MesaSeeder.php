@@ -11,6 +11,6 @@ class MesaSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\Mesa::class,150)->create();
+        factory(App\Models\Mesa::class, 500)->create();
     }
 }

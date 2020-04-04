@@ -15,6 +15,7 @@ class CreateMesasTable extends Migration
     {
         Schema::create('mesas', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('id_restaurante');
             $table->integer('numero');
             $table->integer('capacidad');
             $table->string('descripcion');

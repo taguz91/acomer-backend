@@ -16,4 +16,9 @@ class Sucursal extends Model
         'latitud',
         'longitud',
     ];
+
+    public function restaurante(){
+        return $this->belongsTo('App\Models\Restaurante', 'id_restaurante');
+    }
+    
 }
