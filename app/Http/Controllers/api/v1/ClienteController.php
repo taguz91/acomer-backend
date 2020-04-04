@@ -16,13 +16,15 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        return Cliente::select([
-            'id',
-            'nombre',
-            'apellido',
-            'extra' => Cliente::selectRaw('MAX(created_at)')
-                ->whereColumn('id', 'clientes.id')
-        ])->get();
+        // return Cliente::select([
+        //     'id',
+        //     'nombre',
+        //     'apellido',
+        //     'extra' => Cliente::selectRaw('MAX(created_at)')
+        //         ->whereColumn('id', 'clientes.id')
+        // ])->get();
+        // return Cliente::with(['favoritos.plato:id,url_imagen', 'sugerencias'])->get();
+        return Cliente::with(['platos'])->get();
     }
 
     /**

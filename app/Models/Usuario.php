@@ -12,13 +12,25 @@ class Usuario extends Model
         'nombre',
         'clave',
         'correo',
+        'tipo_usuario',
         'intentos_login',
         'numero_logins',
     ];
 
-    public function historial()
-    {
+    public function historial(){
         return $this->hasMany('App\Models\HistorialUsuario', 'id_usuario');
+    }
+
+    public function cliente(){
+        return $this->hasOne('App\Models\Cliente', 'id_usuario');
+    }
+
+    public function empleado(){
+        return $this->hasOne('App\Models\Empleado', 'id_usuario');
+    }
+
+    public function administrador(){
+        return $this->hasOne('App\Models\Administrador', 'id_usuario');
     }
 
 }

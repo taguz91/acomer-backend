@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Combo::class, function (Faker $faker) {
     return [
         'id_restaurante' => $faker->numberBetween(1, 500),
-        'id_platos' => '{"ids": [12, 13, 14, 15]}',
+        'platos' => '{"ids": [12, 13, 14, 15]}',
         'precio_final' => $faker->randomFloat,
         'extra' => '{"bebida": "si"}'
     ];

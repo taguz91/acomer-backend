@@ -24,4 +24,8 @@ class Empleado extends Model
     {
         return $this->hasMany('App\Models\Pedido', 'id_cliente');
     }
+
+    public function usuario(){
+        return $this->belongsTo('App\Models\Usuario', 'id_usuario');
+    }
 }

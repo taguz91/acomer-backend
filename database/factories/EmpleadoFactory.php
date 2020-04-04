@@ -8,6 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Empleado::class, function (Faker $faker) {
     return [
         'id_restaurante' => $faker->numberBetween(1, 500),
+        'id_usuario' => $faker->unique()->numberBetween(1, 1000),
         'nombre'=> $faker->name,
         'apellido' => $faker->lastName,
         'identificacion' => $faker->creditCardNumber,

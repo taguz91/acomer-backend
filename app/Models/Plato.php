@@ -15,6 +15,10 @@ class Plato extends Model
         'url_imagen',
     ];
 
+    public function getIngredientesAttribute($value) {
+        return \json_decode($value);
+    }
+
     public function restaurante(){
         return $this->belongsTo('App\Models\Restaurante', 'id_restaurante');
     }

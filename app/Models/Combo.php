@@ -9,7 +9,7 @@ class Combo extends Model
     protected $table = 'combos';
 
     protected $fillable = [
-        'id_platos',
+        'platos',
         'precio_final',
         'extra'
     ];

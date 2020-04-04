@@ -22,7 +22,7 @@ class Cliente extends Model
 
     public function platos()
     {
-        return $this->belongsToMany('App\Models\Plato', 'favoritos', 'id_cliente', 'id_favorito');
+        return $this->belongsToMany('App\Models\Plato', 'favoritos', 'id_plato', 'id_cliente');
     }
 
     public function facturas()
@@ -32,7 +32,11 @@ class Cliente extends Model
 
     public function sugerencias()
     {
-        return $this->hasMany('App\Models\Sugerencia', 'id_sugerencia');
+        return $this->hasMany('App\Models\Sugerencia', 'id_cliente');
+    }
+
+    public function usuario(){
+        return $this->belongsTo('App\Models\Usuario', 'id_usuario');
     }
 
 }
