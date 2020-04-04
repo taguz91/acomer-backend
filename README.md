@@ -89,3 +89,17 @@ Ejemplo de una foreignkey.
 ```php
 $table->foreign('profession_id')->references('id')->on('professions');
 ```
+
+Obtenemos los objetos eliminados. 
+```php
+$res = Restaurante::withTrashed()
+            ->where('id', $id)
+            ->get();
+```
+
+Activamos los objetos eliminados. 
+```php
+$res = Restaurante::withTrashed()
+            ->where('id', $id)
+            ->restore();
+```

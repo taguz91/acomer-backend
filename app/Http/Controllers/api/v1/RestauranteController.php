@@ -16,7 +16,7 @@ class RestauranteController extends Controller
      */
     public function index()
     {
-        return Restaurante::all(); 
+        return Restaurante::paginate(15); 
     }
 
     /**
@@ -39,7 +39,7 @@ class RestauranteController extends Controller
      */
     public function show($id)
     {
-        //
+        return Restaurante::findOrFail($id);
     }
 
     /**
@@ -62,6 +62,10 @@ class RestauranteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $res = Restaurante::findOrFail($id);
+        return [
+            'data' => $res,
+            'eliminado' => $res->delete()
+        ];
     }
 }

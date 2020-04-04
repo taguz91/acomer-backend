@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class MenuDia extends Model
 {
+    use SoftDeletes;
+    
     protected $table = 'menu_dia';
 
     protected $fillable = [
