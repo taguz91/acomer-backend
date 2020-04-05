@@ -2,14 +2,12 @@
 
 namespace App\Http\Requests\Sucursal;
 
+use App\Http\Requests\FailedValidation;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Validation\ValidationException;
-use Illuminate\Http\Exceptions\HttpResponseException;
 
 class SucursalCreateRequest extends FormRequest
 {
+    use FailedValidation;
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -35,22 +33,6 @@ class SucursalCreateRequest extends FormRequest
             //Definir si van o no
             //'latitud' => 'required', 
             //'longitud' => 'required'
-        ];
-    }
-
-    public function messages(){
-        return [
-            'id_restaurante.required' => 'El :attribute es obligatorio',
-            'id_restaurante.max' => 'El :attribute no debe tener más de :max caracteres',
-            'horario_atencion.required' => 'El :attribute es obligatorio',
-            'numero.required' => 'El :attribute es obligatorio',
-            'numero.max' => 'El :attribute no debe tener más de :max caracteres',
-            'numero.min' => 'El :attribute no debe tener menos de :max caracteres',
-            'direccion.required' => 'El :attribute es obligatorio',
-            'direccion.max' => 'El :attribute no debe tener más de :max caracteres'
-            //Estos atributos no sé si deban ir
-            //'latitud.required' => 'El :attribute es obligatorio',
-            //'longitud.required' => 'El :attribute es obligatorio'
         ];
     }
 

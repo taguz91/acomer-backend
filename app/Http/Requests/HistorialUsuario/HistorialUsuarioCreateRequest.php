@@ -2,14 +2,12 @@
 
 namespace App\Http\Requests\HistorialUsuario;
 
-use Illuminate\Http\JsonResponse;
+use App\Http\Requests\FailedValidation;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Validation\ValidationException;
-use Illuminate\Http\Exceptions\HttpResponseException;
 
 class HistorialUsuarioCreateRequest extends FormRequest
 {
+    use FailedValidation;
     /**
      * Determine if the user is authorized to make this request.
      *

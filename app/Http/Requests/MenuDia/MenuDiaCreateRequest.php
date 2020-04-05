@@ -2,11 +2,8 @@
 
 namespace App\Http\Requests\MenuDia;
 
-use Illuminate\Http\JsonResponse;
+use App\Http\Requests\FailedValidation;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Validation\ValidationException;
-use Illuminate\Http\Exceptions\HttpResponseException;
 
 class MenuDiaCreateRequest extends FormRequest
 {
@@ -48,20 +45,4 @@ class MenuDiaCreateRequest extends FormRequest
         ];
     }
 
-    
-    // public function filters(){
-    //     return [
-    //         'menu_dia' => 'trim'
-    //     ];
-    // }
-
-    protected function failedValidation(Validator $validator){
-        $errors = (new ValidationException($validator))->errors();
-        throw new HttpResponseException(
-            response()->json(
-                ['errores' => $errors], 
-                JsonResponse::HTTP_UNPROCESSABLE_ENTITY
-            )
-        );
-    }
 }

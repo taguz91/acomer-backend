@@ -2,10 +2,12 @@
 
 namespace App\Http\Requests\Combo;
 
+use App\Http\Requests\FailedValidation;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ComboUpdateRequest extends FormRequest
 {
+    use FailedValidation;
     /**
      * Determine if the user is authorized to make this request.
      *

@@ -2,15 +2,12 @@
 
 namespace App\Http\Requests\Plato;
 
+use App\Http\Requests\FailedValidation;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Validation\ValidationException;
-use Illuminate\Http\Exceptions\HttpResponseException;
-
 
 class PlatoCreateRequest extends FormRequest
 {
+    use FailedValidation;
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -34,18 +31,6 @@ class PlatoCreateRequest extends FormRequest
             //Formato json
             'ingredientes' => 'required',
             'url_imagen' => 'required'
-        ];
-    }
-
-    public function messages(){
-        return [
-            'nombre.required' => 'El :attribute es obligatorio',
-            'nombre.max' => 'El :attribute no debe tener más de :max caracteres',
-            'precio.required' => 'El :attribute es obligatorio',
-            'precio.max' => 'El :attribute no debe tener más de :max caracteres',
-            'precio.min' => 'El :attribute no debe tener menos de :min caracteres',
-            'ingredientes.required' => 'El :attribute es obligatorio',
-            'url_imagen.required' => 'El :attribute es obligatorio'
         ];
     }
 

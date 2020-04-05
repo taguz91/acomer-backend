@@ -2,10 +2,12 @@
 
 namespace App\Http\Requests\Restaurante;
 
+use App\Http\Requests\FailedValidation;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RestauranteUpdateRequest extends FormRequest
 {
+    use FailedValidation;
     /**
      * Determine if the user is authorized to make this request.
      *

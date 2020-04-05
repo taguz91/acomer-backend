@@ -3,13 +3,11 @@
 namespace App\Http\Requests\EncabezadoFactura;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Validation\ValidationException;
-use Illuminate\Http\Exceptions\HttpResponseException;
+use App\Http\Requests\FailedValidation;
 
 class EncabezadoFacturaCreateRequest extends FormRequest
 {
+    use FailedValidation;
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -35,23 +33,6 @@ class EncabezadoFacturaCreateRequest extends FormRequest
         ];
     }
 
-    public function messages(){
-        return [
-        'nombre.required' => 'El :attribute es obligatorio',
-        'nombre.max' => 'El :attribute no debe tener más de :max caracteres',
-        'nombre.min' => 'El :attribute no debe tener menos de :min caracteres',
-        'direccion.required' => 'El :attribute es obligatorio',
-        'direccion.max' => 'El :attribute no debe tener más de :max caracteres',
-        'direccion.min' => 'El :attribute no debe tener menos de :min caracteres',
-        'telefono.required' => 'El :attribute es obligatorio',
-        'telefono.max' => 'El :attribute no debe tener más de :max caracteres',
-        'telefono.min' => 'El :attribute no debe tener menos de :min caracteres',
-        'identificacion.required' => 'El :attribute es obligatorio',
-        'identificacion.max' => 'El :attribute no debe tener más de :max caracteres',
-        'identificacion.min' => 'El :attribute no debe tener menos de :min caracteres'
-        ];
-    }
-
     public function attributes(){
         return [
         'nombre' => 'Nombre',
@@ -69,4 +50,5 @@ class EncabezadoFacturaCreateRequest extends FormRequest
             'identificacion' => 'trim|escape'
         ];
     }
+    
 }
