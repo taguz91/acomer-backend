@@ -16,7 +16,7 @@ class RestauranteController extends Controller
      */
     public function index()
     {
-        return Restaurante::paginate(15); 
+        return Restaurante::paginate(30); 
     }
 
     /**

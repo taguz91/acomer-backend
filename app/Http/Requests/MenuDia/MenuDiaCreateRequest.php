@@ -7,6 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class MenuDiaCreateRequest extends FormRequest
 {
+    use FailedValidation;
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -24,17 +25,8 @@ class MenuDiaCreateRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-           
+        return [      
             'menu_dia' => 'required',
-       
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'menu_dia.required' => 'El :attribute es obligatorio',
         ];
     }
 

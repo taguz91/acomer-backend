@@ -24,7 +24,7 @@ class ClienteController extends Controller
         //         ->whereColumn('id', 'clientes.id')
         // ])->get();
         // return Cliente::with(['favoritos.plato:id,url_imagen', 'sugerencias'])->get();
-        return Cliente::with(['platos'])->get();
+        return Cliente::with(['facturas.pedido.mesa'])->get();
     }
 
     /**

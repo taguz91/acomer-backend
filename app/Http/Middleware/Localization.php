@@ -18,7 +18,7 @@ class Localization
     {
         // Obtenemos el header para saber la localizacion 
         $local = ($request->hasHeader('X-localization')) ? 
-            $request->header('X-localization') : 'en';
+            $request->header('X-localization') : 'es';
         // Cambiamos el idioma de la app para obtenr los request
         if (in_array($local, [
             'en', 
