@@ -17,6 +17,8 @@ class RestauranteController extends Controller
     public function index()
     {
         return Restaurante::paginate(30); 
+        // Solos los eliminados 
+        // return Restaurante::onlyTrashed()->get();
     }
 
     /**
@@ -62,10 +64,15 @@ class RestauranteController extends Controller
      */
     public function destroy($id)
     {
-        $res = Restaurante::findOrFail($id);
+        // $res = Restaurante::findOrFail($id);
+        // return [
+        //     'data' => $res,
+        //     'eliminado' => $res->delete()
+        // ];
+        $res = Restaurante::withTrashed()->findOrFail($id);
         return [
             'data' => $res,
-            'eliminado' => $res->delete()
+            'activado' => $res->restore()
         ];
     }
 }

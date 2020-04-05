@@ -23,7 +23,7 @@ Route::namespace('api\v1')->group(function () {
         Route::apiResource('administrador', 'AdministradorController');
         Route::apiResource('cliente', 'ClienteController');
         Route::apiResource('combo', 'ComboController');
-        Route::apiResource('usuarios/historial', 'HistorialUsuarioController');
+        Route::apiResource('usuario/historial', 'HistorialUsuarioController');
         Route::apiResource('menu', 'MenuController');
         Route::apiResource('reserva', 'ReservaController');
         Route::apiResource('sugerencia', 'SugerenciaController');

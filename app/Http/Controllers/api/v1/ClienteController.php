@@ -24,7 +24,9 @@ class ClienteController extends Controller
         //         ->whereColumn('id', 'clientes.id')
         // ])->get();
         // return Cliente::with(['favoritos.plato:id,url_imagen', 'sugerencias'])->get();
-        return Cliente::with(['facturas.pedido.mesa'])->get();
+        // return Cliente::with(['facturas.pedido.mesa'])->get();
+        // return Cliente::with(['facturas.pedido:id,platos'])->get();
+        return Cliente::paginate(30);
     }
 
     /**
@@ -35,9 +37,15 @@ class ClienteController extends Controller
      */
     public function store(ClienteCreateRequest $request)
     {
+        $cliente = new Cliente($request->all());
+        $cliente->numero_compras = 0;
+        $cliente->ultima_compra = date('Y-m-d H:m:s');
+        $cliente->total_consumos = 0;
+        $guardado = $cliente->save();
         return [
             'message' => 'Guardado',
-            'data' => $request->all()
+            'data' => $cliente,
+            'guardado' => $guardado
         ];
     }
 

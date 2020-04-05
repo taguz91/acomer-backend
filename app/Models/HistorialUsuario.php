@@ -16,4 +16,9 @@ class HistorialUsuario extends Model
         'accion',
         'plataforma'
     ];
+
+    public function usuario(){
+        return $this->hasOne('App\Models\Usuario', 'id', 'id_usuario');
+    }
+
 }

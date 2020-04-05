@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\api\v1;
 
 use Illuminate\Http\Request;
+use App\Models\HistorialUsuario;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\HistorialUsuario\HistorialUsuarioCollection;
 use App\Http\Requests\HistorialUsuario\HistorialUsuarioCreateRequest;
 
 class HistorialUsuarioController extends Controller
@@ -15,7 +17,17 @@ class HistorialUsuarioController extends Controller
      */
     public function index()
     {
-        //
+        return new HistorialUsuarioCollection(
+            HistorialUsuario::select([
+                'id',
+                'accion',
+                'plataforma',
+                'created_at',
+                'id_usuario'
+            ])
+            ->with('usuario:id,nombre,correo')
+            ->get()
+        );
     }
 
     /**
