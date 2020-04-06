@@ -8,6 +8,7 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class CategoriaCollection extends ResourceCollection
 {
+    use NewCollectionResponse;
     /**
      * Transform the resource collection into an array.
      *
