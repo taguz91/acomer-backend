@@ -15,12 +15,11 @@ class MenuDiaResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id'=> $this->id,
-            'id_restaurante'=> $this->id_restaurante,
-            'menu_dia'=>$this->menu_dia,
-            'fecha_inicio'=>$this->fecha_inicio,
-            'fecha_fin'=>$this->fecha_fin,
-            
+            'id_menu_dia' => $this->id,
+            'id_restaurante' => $this->id_restaurante,
+            'menu_dia' => $this->menu_dia,
+            'fecha_inicio' => $this->fecha_inicio,
+            'fecha_fin' => $this->fecha_fin,
         ];
     }
 }

@@ -15,7 +15,7 @@ class RestauranteResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id'=> $this->id,
+            'id_restaurante'=> $this->id,
             'nombre_comercial'=>$this->nombre_comercial,
             'nombre_fiscal'=>$this->nombre_fiscal,
             'inicio_suscripcion'=>$this->inicio_suscripcion,

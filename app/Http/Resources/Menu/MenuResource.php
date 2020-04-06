@@ -15,7 +15,7 @@ class MenuResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
+            'id_menu' => $this->id,
             'fecha_creacion' => $this->created_at,
             'menu' => $this->menu
         ];

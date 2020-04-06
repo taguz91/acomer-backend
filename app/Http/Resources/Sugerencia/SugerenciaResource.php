@@ -16,7 +16,7 @@ class SugerenciaResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
+            'id_sugerencia' => $this->id,
             'sugerencia' => $this->sugerencia,
             'fecha_creacion' => $this->created_at,
             $this->mergeWhen(

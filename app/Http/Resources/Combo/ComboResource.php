@@ -15,7 +15,7 @@ class ComboResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
+            'id_combo' => $this->id,
             'platos' => $this->platos,
             'precio' => $this->precio_final,
             'extra' => $this->extra,

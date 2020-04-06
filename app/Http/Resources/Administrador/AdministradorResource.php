@@ -16,7 +16,7 @@ class AdministradorResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
+            'id_administrador' => $this->id,
             $this->mergeWhen(
                 $this->resource->relationLoaded('usuario') && !is_null($this->usuario), 
                 new UsuarioTblResource($this->usuario) 

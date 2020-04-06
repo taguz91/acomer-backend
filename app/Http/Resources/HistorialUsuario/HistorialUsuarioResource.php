@@ -16,7 +16,7 @@ class HistorialUsuarioResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
+            'id_historial_usuario' => $this->id,
             'accion' => $this->accion,
             'plataforma' => '',
             'fecha_creacion' => $this->created_at,
