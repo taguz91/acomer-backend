@@ -17,6 +17,12 @@ class Restaurante extends Model
         'nombre_fiscal',
     ];
 
+    protected $attributes = [
+        'inicio_suscripcion' =>  date('Y-m-d H:m:s'),
+        'ultimo_pago' => date('Y-m-d H:m:s'),
+        'fecha_proximo_pago' =>  date('Y-m-d H:m:s')
+    ];
+
     public function categorias()
     {
         return $this->hasMany('App\Models\Categoria', 'id_restaurante');

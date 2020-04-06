@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api\v1;
 
+use App\Models\Sucursal;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Sucursal\SucursalCreateRequest;
@@ -26,7 +27,8 @@ class SucursalController extends Controller
      */
     public function store(SucursalCreateRequest $request)
     {
-        //
+        $suc = new Sucursal($request->all());
+        return $this->saveObject($suc);
     }
 
     /**
@@ -37,7 +39,8 @@ class SucursalController extends Controller
      */
     public function show($id)
     {
-        //
+        $suc = Sucursal::findOrFail($id);
+        return $this->showResponse($suc);
     }
 
     /**
@@ -49,7 +52,8 @@ class SucursalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $suc = Sucursal::findOrFail($id);
+        return $this->updateObject($suc, $request);
     }
 
     /**
@@ -60,6 +64,7 @@ class SucursalController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $suc = Sucursal::findOrFail($id);
+        return $this->deleteObject($suc);
     }
 }

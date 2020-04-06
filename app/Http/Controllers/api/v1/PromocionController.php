@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api\v1;
 
+use App\Models\Promocion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Promocion\PromocionCreateRequest;
@@ -26,7 +27,8 @@ class PromocionController extends Controller
      */
     public function store(PromocionCreateRequest $request)
     {
-        //
+        $prom = new Promocion($request->all());
+        return $this->saveObject($prom);
     }
 
     /**
@@ -37,7 +39,8 @@ class PromocionController extends Controller
      */
     public function show($id)
     {
-        //
+        $prom = Promocion::findOrFail($id);
+        return $this->showResponse($prom);
     }
 
     /**
@@ -49,7 +52,8 @@ class PromocionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $prom = Promocion::findOrFail($id);
+        return $this->updateObject($prom, $request);
     }
 
     /**
@@ -60,6 +64,7 @@ class PromocionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $prom = Promocion::findOrFail($id);
+        return $this->deleteObject($prom);
     }
 }

@@ -16,6 +16,9 @@ class Reporte extends Model
         'nombre'
     ];
 
+    protected $attributes = [
+        'fecha' =>  date('Y-m-d H:m:s'
+    ];
    
 
     #tranformar el json en un array

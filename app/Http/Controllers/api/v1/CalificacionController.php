@@ -15,7 +15,7 @@ class CalificacionController extends Controller
      */
     public function index()
     {
-        return Calificacion::all();
+        return Calificacion::paginate(30); 
     }
 
     /**
@@ -27,12 +27,8 @@ class CalificacionController extends Controller
     public function store(CalificacionCreateRequest $request)
     {
         $calificacion = new Calificacion($request->all());
-       $guardado = $calificacion->save();
-        return[
-            'message'=>'Guardado',
-            'data'=>$calificacion,
-            'guardado'=>$guardado
-        ];   
+        return $this->saveObject($calificacion);
+       
     }
 
     /**
@@ -43,7 +39,8 @@ class CalificacionController extends Controller
      */
     public function show($id)
     {
-        //
+        $calificacion = Calificacion::findOrFail($id);
+        return $this->showResponse($calificacion);
     }
 
     /**
@@ -55,7 +52,8 @@ class CalificacionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $calificacion = Calificacion::findOrFail($id);
+        return $this->updateObject($calificacion, $request);
     }
 
     /**
@@ -66,10 +64,7 @@ class CalificacionController extends Controller
      */
     public function destroy($id)
     {
-        $res = Calificacion::withTrashed()->findOrFail($id);
-        return [
-            'data' => $res,
-            'activado' => $res->restore()
-        ];
+        $calificacion = Calificacion::findOrFail($id);
+        return $this->deleteObject($calificacion);
     }
 }

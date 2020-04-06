@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api\v1;
 
+use App\Models\Favorito;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Favorito\FavoritoCreateRequest;
@@ -26,7 +27,8 @@ class FavoritoController extends Controller
      */
     public function store(FavoritoCreateRequest $request)
     {
-        //
+        $fav = new Favorito($request->all());
+        return $this->saveObject($fav);
     }
 
     /**
@@ -37,7 +39,8 @@ class FavoritoController extends Controller
      */
     public function show($id)
     {
-        //
+        $fav = Favorito::findOrFail($id);
+        return $this->showResponse($fav);
     }
 
     /**
@@ -49,7 +52,8 @@ class FavoritoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $fav = Favorito::findOrFail($id);
+        return $this->updateObject($fav, $request);
     }
 
     /**
@@ -60,6 +64,7 @@ class FavoritoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $fav = Favorito::findOrFail($id);
+        return $this->deleteObject($fav);
     }
 }
