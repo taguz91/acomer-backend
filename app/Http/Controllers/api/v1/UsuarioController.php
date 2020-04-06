@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api\v1;
 
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Usuario\UsuarioCreateRequest;
@@ -26,7 +27,8 @@ class UsuarioController extends Controller
      */
     public function store(UsuarioCreateRequest $request)
     {
-        //
+        $usu = new Usuario($request->all());
+        return $this->saveObject($usu);
     }
 
     /**
@@ -49,7 +51,8 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $usu = Usuario::findOrFail($id);
+        return $this->updateObject($usu, $request);
     }
 
     /**
@@ -60,6 +63,7 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usu = Usuario::findOrFail($id);
+        return $this->deleteObject($usu);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api\v1;
 
+use App\Models\EncabezadoFactura;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EncabezadoFactura\EncabezadoFacturaCreateRequest;
@@ -26,7 +27,8 @@ class EncabezadoFacturaController extends Controller
      */
     public function store(EncabezadoFacturaCreateRequest $request)
     {
-        //
+        $encfac = new EncabezadoFactura($request->all());
+        return $this->saveObject($encfac);
     }
 
     /**
@@ -49,7 +51,8 @@ class EncabezadoFacturaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $encfac = EncabezadoFactura::findOrFail($id);
+        return $this->updateObject($encfac, $request);
     }
 
     /**
@@ -60,6 +63,7 @@ class EncabezadoFacturaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $encfac = EncabezadoFactura::findOrFail($id);
+        return $this->deleteObject($encfac);
     }
 }

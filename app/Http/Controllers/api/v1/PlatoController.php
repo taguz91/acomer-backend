@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api\v1;
 
+use App\Models\Plato;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Plato\PlatoCreateRequest;
@@ -26,7 +27,8 @@ class PlatoController extends Controller
      */
     public function store(PlatoCreateRequest $request)
     {
-        //
+        $pla = new Plato($request->all());
+        return $this->saveObject($pla);
     }
 
     /**
@@ -49,7 +51,8 @@ class PlatoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pla = Plato::findOrFail($id);
+        return $this->updateObject($pla, $request);
     }
 
     /**
@@ -60,6 +63,7 @@ class PlatoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pla = Plato::findOrFail($id);
+        return $this->deleteObject($pla);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api\v1;
 
 use Illuminate\Http\Request;
+use App\Models\Empleado;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Empleado\EmpleadoCreateRequest;
 
@@ -26,7 +27,8 @@ class EmpleadoController extends Controller
      */
     public function store(EmpleadoCreateRequest $request)
     {
-        //
+        $emp = new Empleado($request->all());
+        return $this->saveObject($emp);
     }
 
     /**
@@ -49,7 +51,8 @@ class EmpleadoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $emp = Empleado::findOrFail($id);
+        return $this->updateObject($emp, $request);
     }
 
     /**
@@ -60,6 +63,7 @@ class EmpleadoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $emp = Empleado::findOrFail($id);
+        return $this->deleteObject($emp);
     }
 }
