@@ -21,7 +21,7 @@ class CreateEmpleadosTable extends Migration
             $table->string('apellido', 50);
             $table->string('identificacion', 20);
             $table->bigInteger('id_rol');
-            $table->string('foto_url');
+            $table->string('foto_url')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

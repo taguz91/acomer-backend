@@ -35,8 +35,8 @@ class MenuController extends Controller
      */
     public function store(MenuCreateRequest $request)
     {
-        $his = new Menu($request->all());
-        return $this->saveObject($his);
+        $menu = new Menu($request->all());
+        return $this->saveObject($menu);
     }
 
     /**
@@ -47,7 +47,8 @@ class MenuController extends Controller
      */
     public function show($id)
     {
-        //
+        $menu = new Menu($request->all());
+        return $this->showResponse($menu);
     }
 
     /**
