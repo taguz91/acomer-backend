@@ -22,7 +22,7 @@ class CreateEncabezadoFacturasTable extends Migration
             $table->timestamp('fecha');
             $table->string('nombre', 100);
             $table->string('direccion', 100);
-            $table->string('telefono', 50);
+            $table->string('telefono', 50)->nullable();
             $table->string('identificacion', 50);
             $table->timestamps();
             $table->softDeletes();

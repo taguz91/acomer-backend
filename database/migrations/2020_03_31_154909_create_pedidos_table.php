@@ -19,7 +19,7 @@ class CreatePedidosTable extends Migration
             $table->bigInteger('id_empleado');
             $table->bigInteger('id_mesa');
             $table->json('platos');
-            $table->string('notas',100);
+            $table->string('notas',100)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

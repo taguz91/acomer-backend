@@ -19,8 +19,8 @@ class CreateSucursalesTable extends Migration
             $table->json('horario_atencion');
             $table->integer('numero');
             $table->string('direccion');
-            $table->double('latitud');
-            $table->double('longitud');
+            $table->double('latitud')->nullable();
+            $table->double('longitud')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
