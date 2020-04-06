@@ -17,6 +17,14 @@ class Combo extends Model
         'extra'
     ];
 
+    public function getPlatosAttribute($value) {
+        return json_decode($value);
+    }
+
+    public function getExtraAttribute($value) {
+        return json_decode($value);
+    }
+
     public function restaurante(){
         return $this->belongsTo('App\Models\Restaurante', 'id_restaurante');
     }

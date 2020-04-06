@@ -17,11 +17,12 @@ class SugerenciaController extends Controller
      */
     public function index()
     {
-        return SugerenciaCollection(
+        return new SugerenciaCollection(
             Sugerencia::select([
                 'id',
                 'sugerencia',
-                'created_at'
+                'created_at',
+                'id_cliente'
             ])->with('cliente:id,nombre,apellido,identificacion,telefono')
             ->paginate()
         );

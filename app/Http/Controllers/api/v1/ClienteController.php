@@ -27,7 +27,7 @@ class ClienteController extends Controller
                 'numero_compras',
                 'ultima_compra',
                 'total_consumos'
-            ])-paginate()
+            ])->paginate()
         );
     }
 
