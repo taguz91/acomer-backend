@@ -29,7 +29,7 @@ class PedidoCreateRequest extends FormRequest
             'id_empleado' => 'required',
             'id_mesa' => 'required',
             'platos'=> 'required',
-            'notas'  => 'required|max=100|min=20'
+            'notas'  => 'required'
         ];
     }
 

@@ -16,6 +16,10 @@ class MenuDia extends Model
 
     ];
 
+    protected $attributes = [
+        'fecha_inicio' =>  date('Y-m-d H:m:s'),
+        'fecha_fin' => date('Y-m-d H:m:s')
+    ];
     public function getMenuDiaAttribute($value){
         return json_decode($value, true);
     }

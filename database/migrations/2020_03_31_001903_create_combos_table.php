@@ -18,7 +18,7 @@ class CreateCombosTable extends Migration
             $table->bigInteger('id_restaurante');
             $table->json('platos');
             $table->double('precio_final', 10, 2);
-            $table->json('extra');
+            $table->json('extra')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

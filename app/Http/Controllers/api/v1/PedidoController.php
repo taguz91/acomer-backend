@@ -16,7 +16,7 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        return Pedido::all();
+        return Pedido::paginate(30); 
     }
 
     /**
@@ -27,7 +27,8 @@ class PedidoController extends Controller
      */
     public function store(PedidoCreateRequest $request)
     {
-        //
+        $pedido = new Pedido($request->all());
+        return $this->saveObject($pedido);
     }
 
     /**
@@ -38,7 +39,8 @@ class PedidoController extends Controller
      */
     public function show($id)
     {
-        //
+        $pedido = Pedido::findOrFail($id);
+        return $this->showResponse($pedido);
     }
 
     /**
@@ -50,7 +52,8 @@ class PedidoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pedido = Pedido::findOrFail($id);
+        return $this->updateObject($pedido, $request);
     }
 
     /**
@@ -61,6 +64,7 @@ class PedidoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pedido = Pedido::findOrFail($id);
+        return $this->deleteObject($pedido);
     }
 }

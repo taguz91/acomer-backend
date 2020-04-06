@@ -17,7 +17,7 @@ class ReporteController extends Controller
      */
     public function index()
     {
-        return Reporte::all(); 
+        return Reporte::paginate(30); 
     }
 
     /**
@@ -30,7 +30,8 @@ class ReporteController extends Controller
      
     public function store(ReporteCreateRequest $request)
     {
-        //
+        $reporte = new Reporte($request->all());
+        return $this->saveObject($reporte);
     }
 
     /**
@@ -43,7 +44,8 @@ class ReporteController extends Controller
 
     public function show($id)
     {
-        return Reporte::find($id);
+        $reporte = Reporte::findOrFail($id);
+        return $this->showResponse($reporte);
     }
 
     /**
@@ -55,7 +57,8 @@ class ReporteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $reporte = Reporte::findOrFail($id);
+        return $this->updateObject($reporte, $request);
     }
 
     /**
@@ -66,6 +69,7 @@ class ReporteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $reporte = Reporte::findOrFail($id);
+        return $this->deleteObject($reporte);
     }
 }

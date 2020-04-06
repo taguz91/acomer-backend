@@ -48,7 +48,8 @@ class SugerenciaController extends Controller
      */
     public function show($id)
     {
-        //
+        $sug = Sugerencia::findOrFail($id);
+        return $this->showResponse($sug, $request);
     }
 
     /**

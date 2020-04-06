@@ -18,8 +18,8 @@ class CreatePlatosTable extends Migration
             $table->bigInteger('id_restaurante');
             $table->string('nombre', 50);
             $table->double('precio', 10, 2);
-            $table->json('ingredientes');
-            $table->string('url_imagen');
+            $table->json('ingredientes')->nullable();
+            $table->string('url_imagen')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -19,10 +19,10 @@ class CreateUsuariosTable extends Migration
             $table->string('clave', 50);
             $table->string('correo', 100)->unique();
             $table->integer('tipo_usuario');
-            $table->timestamp('ultimo_login');
-            $table->timestamp('ultimo_cambio_clave');
-            $table->integer('intentos_login');
-            $table->integer('numero_logins');
+            $table->timestamp('ultimo_login')->nullable();
+            $table->timestamp('ultimo_cambio_clave')->nullable();
+            $table->integer('intentos_login')->default(0);
+            $table->integer('numero_logins')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

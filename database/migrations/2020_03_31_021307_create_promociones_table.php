@@ -21,7 +21,7 @@ class CreatePromocionesTable extends Migration
             $table->timestamp('fecha_fin');
             $table->double('precio', 10, 2);
             $table->integer('descuento');
-            $table->json('extra');
+            $table->json('extra')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

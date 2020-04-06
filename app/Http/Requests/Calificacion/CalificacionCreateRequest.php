@@ -29,7 +29,7 @@ class CalificacionCreateRequest extends FormRequest
         return [
             'id_fk' => 'required|integer',
             'id_cliente' => 'required|integer',
-            'calificacion' => 'required|number|min:1|max:10',
+            'calificacion' => 'required|integer',
             'tipo_calificacion' => 'required'
         ];
     }

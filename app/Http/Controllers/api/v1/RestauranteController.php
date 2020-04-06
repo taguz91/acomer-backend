@@ -30,7 +30,10 @@ class RestauranteController extends Controller
     public function store(RestauranteCreateRequest $request)
 
     {
-        
+        $restaurante = new Restaurante($request->all());
+        return $this->saveObject($restaurante);
+       
+
     }
 
     /**
@@ -41,7 +44,8 @@ class RestauranteController extends Controller
      */
     public function show($id)
     {
-        return Restaurante::findOrFail($id);
+        $restaurante = Restaurante::findOrFail($id);
+        return $this->showResponse($restaurante);
     }
 
     /**
@@ -51,9 +55,10 @@ class RestauranteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update( $request, $id)
+    public function update(Request $request, $id)
     {
-        //
+        $restaurante = Restaurante::findOrFail($id);
+        return $this->updateObject($restaurante, $request);
     }
 
     /**
@@ -69,10 +74,7 @@ class RestauranteController extends Controller
         //     'data' => $res,
         //     'eliminado' => $res->delete()
         // ];
-        $res = Restaurante::withTrashed()->findOrFail($id);
-        return [
-            'data' => $res,
-            'activado' => $res->restore()
-        ];
+        $restaurante = Restaurante::findOrFail($id);
+        return $this->deleteObject($restaurante);
     }
 }

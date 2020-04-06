@@ -51,7 +51,8 @@ class ClienteController extends Controller
      */
     public function show($id)
     {
-        //
+        $cli = Cliente::findOrFail($id);
+        return $this->showResponse($cli);
     }
 
     /**

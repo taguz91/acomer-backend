@@ -46,7 +46,8 @@ class AdministradorController extends Controller
      */
     public function show($id)
     {
-        //
+        $adm = Administrador::findOrFail($id);
+        return $this->showReponse($adm);
     }
 
     /**

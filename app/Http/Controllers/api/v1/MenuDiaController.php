@@ -16,7 +16,7 @@ class MenuDiaController extends Controller
      */
     public function index()
     {
-        return MenuDia::all();
+        return MenuDia::paginate(30); 
     }
 
     /**
@@ -27,7 +27,9 @@ class MenuDiaController extends Controller
      */
     public function store(MenuDiaCreateRequest $request)
     {
-        //
+        $menudia = new MenuDia($request->all());
+        return $this->saveObject($menudia);
+        
     }
 
     /**
@@ -38,7 +40,8 @@ class MenuDiaController extends Controller
      */
     public function show($id)
     {
-        //
+        $menudia = MenuDia::findOrFail($id);
+        return $this->showResponse($menudia);
     }
 
     /**
@@ -50,7 +53,8 @@ class MenuDiaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $menudia = MenuDia::findOrFail($id);
+        return $this->updateObject($menudia, $request);
     }
 
     /**
@@ -61,6 +65,7 @@ class MenuDiaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $menudia = MenuDia::findOrFail($id);
+        return $this->deleteObject($menudia);
     }
 }
