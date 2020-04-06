@@ -39,7 +39,8 @@ class PlatoController extends Controller
      */
     public function show($id)
     {
-        //
+        $pla = Plato::findOrFail($id);
+        return $this->showResponse($pla);
     }
 
     /**

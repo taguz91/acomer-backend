@@ -39,7 +39,8 @@ class EncabezadoFacturaController extends Controller
      */
     public function show($id)
     {
-        //
+        $encfac = EncabezadoFactura::findOrFail($id);
+        return $this->showResponse($encfac);
     }
 
     /**

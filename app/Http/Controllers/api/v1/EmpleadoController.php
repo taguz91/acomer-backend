@@ -39,7 +39,8 @@ class EmpleadoController extends Controller
      */
     public function show($id)
     {
-        //
+        $emp = Empleado::findOrFail($id);
+        return $this->showResponse($emp);
     }
 
     /**

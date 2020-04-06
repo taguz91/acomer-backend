@@ -39,7 +39,8 @@ class FavoritoController extends Controller
      */
     public function show($id)
     {
-        //
+        $fav = Favorito::findOrFail($id);
+        return $this->showResponse($fav);
     }
 
     /**

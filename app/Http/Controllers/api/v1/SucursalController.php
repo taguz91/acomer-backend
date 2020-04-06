@@ -39,7 +39,8 @@ class SucursalController extends Controller
      */
     public function show($id)
     {
-        //
+        $suc = Sucursal::findOrFail($id);
+        return $this->showResponse($suc);
     }
 
     /**

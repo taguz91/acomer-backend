@@ -39,7 +39,8 @@ class PromocionController extends Controller
      */
     public function show($id)
     {
-        //
+        $prom = Promocion::findOrFail($id);
+        return $this->showResponse($prom);
     }
 
     /**

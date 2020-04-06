@@ -39,7 +39,8 @@ class UsuarioController extends Controller
      */
     public function show($id)
     {
-        //
+        $usu = Usuario::findOrFail($id);
+        return $this->showResponse($usu);
     }
 
     /**
