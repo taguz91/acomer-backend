@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Cliente extends Model
 {
-
     use SoftDeletes;
     
     protected $table = 'clientes';
@@ -22,8 +21,7 @@ class Cliente extends Model
 
     protected $attributes = [
         'numero_compras' => 0,
-        'ultima_compra' => date('Y-m-d H:m:s'),
-        'totan_consumos' => 0,
+        'total_consumos' => 0,
     ];
 
     public function favoritos()

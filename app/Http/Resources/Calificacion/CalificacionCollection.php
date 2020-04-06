@@ -9,6 +9,7 @@ use App\Http\Resources\Calificacion\CalificacionResource;
 
 class CalificacionCollection extends ResourceCollection
 {
+    use NewCollectionResponse;
     /**
      * Transform the resource collection into an array.
      *
@@ -17,7 +18,7 @@ class CalificacionCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return $this->NewCollectionResponse(
+        return $this->newCollectionResponse(
             CalificacionResource::collection($this->collection)
         );
     }

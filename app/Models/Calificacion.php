@@ -22,7 +22,7 @@ class Calificacion extends Model
         $this->morphTo();
     }
 
-    public function usuario()
+    public function cliente()
     {
         return $this->belongsTo('App\Models\Cliente', 'id_cliente');
     }
