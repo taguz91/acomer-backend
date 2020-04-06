@@ -38,7 +38,8 @@ class HistorialUsuarioController extends Controller
      */
     public function store(HistorialUsuarioCreateRequest $request)
     {
-        //
+        $his = new HistorialUsuario($request->all());
+        return $this->saveObject($his);
     }
 
     /**
@@ -61,7 +62,8 @@ class HistorialUsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $his = HistorialUsuario::findOrFail($id);
+        return $this->updateObject($his, $request);
     }
 
     /**
@@ -72,6 +74,7 @@ class HistorialUsuarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $his = HistorialUsuario::findOrFail($id);
+        return $this->deleteObject($his);
     }
 }

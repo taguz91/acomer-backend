@@ -18,7 +18,13 @@ class MenuController extends Controller
      */
     public function index()
     {
-        return Menu::all();
+        return new MenuCollection(
+            MenuResource::select([
+                'id',
+                'created_at',
+                'menu'
+            ])->paginate()
+        );
     }
 
     /**
@@ -29,13 +35,8 @@ class MenuController extends Controller
      */
     public function store(MenuCreateRequest $request)
     {
-        return new MenuCollection(
-            MenuResource::select([
-                'id',
-                'created_at',
-                'menu'
-            ])->paginate()
-        );
+        $his = new Menu($request->all());
+        return $this->saveObject($his);
     }
 
     /**
@@ -58,7 +59,8 @@ class MenuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $menu = Menu::findOrFail($id);
+        return $this->updateObject($menu, $request);
     }
 
     /**
@@ -69,6 +71,7 @@ class MenuController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $menu = Menu::findOrFail($id);
+        return $this->deleteObject($menu);
     }
 }

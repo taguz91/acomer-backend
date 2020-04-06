@@ -37,7 +37,8 @@ class ReservaController extends Controller
      */
     public function store(ReservaCreateRequest $request)
     {
-        //
+        $res = Reserva::findOrFail($request->all());
+        return $this->saveObject($res);
     }
 
     /**
@@ -60,7 +61,8 @@ class ReservaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $res = Reserva::findOrFail($id);
+        return $this->updateObject($res, $request);
     }
 
     /**
@@ -71,6 +73,7 @@ class ReservaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $res = Reserva::findOrFail($id);
+        return $this->deleteObject($res);
     }
 }

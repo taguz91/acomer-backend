@@ -6,7 +6,7 @@ trait NewCollectionResponse {
 
   protected function newCollectionResponse($data) {
     return [
-      'status' => 200,
+      'status' => 206,
       'data' => $data,
       'meta' => [
         'total_resultados' => $this->collection->count()
