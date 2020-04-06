@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Resources\HistorialUsuario;
+namespace App\Http\Resources\Combo;
 
+use App\Http\Resources\Combo\ComboResource;
 use App\Http\Resources\NewCollectionResponse;
 use Illuminate\Http\Resources\Json\ResourceCollection;
-use App\Http\Resources\HistorialUsuario\HistorialUsuarioResource;
 
-class HistorialUsuarioCollection extends ResourceCollection
+class ComboCollection extends ResourceCollection
 {
     use NewCollectionResponse;
     /**
@@ -17,8 +17,8 @@ class HistorialUsuarioCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return $this->newReponseCollection(
-            HistorialUsuarioResource::collection($this->collection),
+        return $this->newCollectionResponse(
+            ComboResource::collection($this->collection)
         );
     }
 }

@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Resources\HistorialUsuario;
+namespace App\Http\Resources\Reserva;
 
 use App\Http\Resources\NewCollectionResponse;
 use Illuminate\Http\Resources\Json\ResourceCollection;
-use App\Http\Resources\HistorialUsuario\HistorialUsuarioResource;
 
-class HistorialUsuarioCollection extends ResourceCollection
+class ReservaCollection extends ResourceCollection
 {
     use NewCollectionResponse;
     /**
@@ -17,8 +16,10 @@ class HistorialUsuarioCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return $this->newReponseCollection(
-            HistorialUsuarioResource::collection($this->collection),
-        );
+        return [
+            $this->newCollectionResponse(
+                ReservaCollection::collection($this->collection),
+            )
+        ];
     }
 }

@@ -26,7 +26,7 @@ class HistorialUsuarioController extends Controller
                 'id_usuario'
             ])
             ->with('usuario:id,nombre,correo')
-            ->get()
+            ->paginate()
         );
     }
 
