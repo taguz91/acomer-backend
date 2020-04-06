@@ -16,7 +16,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        return Categoria::all();
+        return Categoria::paginate(30); 
     }
 
     /**
@@ -28,12 +28,9 @@ class CategoriaController extends Controller
     public function store(CategoriaCreateRequest $request)
     {
         $categoria = new Categoria($request->all());
-       $guardado = $categoria->save();
-        return[
-            'message'=>'Guardado',
-            'data'=>$categoria,
-            'guardado'=>$guardado
-        ];
+        return $this->saveObject($categoria);
+       
+
     }
 
     /**
@@ -44,7 +41,8 @@ class CategoriaController extends Controller
      */
     public function show($id)
     {
-        //
+        $categoria = Categoria::findOrFail($id);
+        return $this->showResponse($categoria);
     }
 
     /**
@@ -56,7 +54,8 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $categoria = Categoria::findOrFail($id);
+        return $this->updateObject($categoria, $request);
     }
 
     /**
@@ -67,10 +66,7 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-        $res = Categoria::withTrashed()->findOrFail($id);
-        return [
-            'data' => $res,
-            'activado' => $res->restore()
-        ];
+        $categoria = Categoria::findOrFail($id);
+        return $this->deleteObject($categoria);
     }
 }

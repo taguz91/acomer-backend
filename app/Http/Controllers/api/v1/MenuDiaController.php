@@ -16,7 +16,7 @@ class MenuDiaController extends Controller
      */
     public function index()
     {
-        return MenuDia::all();
+        return MenuDia::paginate(30); 
     }
 
     /**
@@ -27,15 +27,9 @@ class MenuDiaController extends Controller
      */
     public function store(MenuDiaCreateRequest $request)
     {
-        $menu_dia = new MenuDia($request->all());
-        $menu_dia->fecha_inicio = date('Y-m-d H:m:s');
-        $menu_dia->fecha_fin = date('Y-m-d H:m:s');
-        $guardado = $menu_dia->save();
-        return[
-            'message'=>'Guardado',
-            'data'=>$menu_dia,
-            'guardado'=>$guardado
-        ];
+        $menudia = new MenuDia($request->all());
+        return $this->saveObject($menudia);
+        
     }
 
     /**
@@ -46,7 +40,8 @@ class MenuDiaController extends Controller
      */
     public function show($id)
     {
-        //
+        $menudia = MenuDia::findOrFail($id);
+        return $this->showResponse($menudia);
     }
 
     /**
@@ -58,7 +53,8 @@ class MenuDiaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $menudia = MenuDia::findOrFail($id);
+        return $this->updateObject($menudia, $request);
     }
 
     /**
@@ -69,10 +65,7 @@ class MenuDiaController extends Controller
      */
     public function destroy($id)
     {
-        $res = MenuDia::withTrashed()->findOrFail($id);
-        return [
-            'data' => $res,
-            'activado' => $res->restore()
-        ];
+        $menudia = MenuDia::findOrFail($id);
+        return $this->deleteObject($menudia);
     }
 }

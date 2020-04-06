@@ -31,15 +31,8 @@ class RestauranteController extends Controller
 
     {
         $restaurante = new Restaurante($request->all());
-        $restaurante->inicio_suscripcion = date('Y-m-d H:m:s');
-        $restaurante->ultimo_pago = date('Y-m-d H:m:s');
-        $restaurante->fecha_proximo_pago = date('Y-m-d H:m:s');
-        $guardado = $restaurante->save();
-        return[
-            'message'=>'Guardado',
-            'data'=>$restaurante,
-            'guardado'=>$guardado
-        ];
+        return $this->saveObject($restaurante);
+       
 
     }
 
@@ -51,7 +44,8 @@ class RestauranteController extends Controller
      */
     public function show($id)
     {
-        return Restaurante::findOrFail($id);
+        $restaurante = Restaurante::findOrFail($id);
+        return $this->showResponse($restaurante);
     }
 
     /**
@@ -61,9 +55,10 @@ class RestauranteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update( $request, $id)
+    public function update(Request $request, $id)
     {
-        //
+        $restaurante = Restaurante::findOrFail($id);
+        return $this->updateObject($restaurante, $request);
     }
 
     /**
@@ -79,10 +74,7 @@ class RestauranteController extends Controller
         //     'data' => $res,
         //     'eliminado' => $res->delete()
         // ];
-        $res = Restaurante::withTrashed()->findOrFail($id);
-        return [
-            'data' => $res,
-            'activado' => $res->restore()
-        ];
+        $restaurante = Restaurante::findOrFail($id);
+        return $this->deleteObject($restaurante);
     }
 }
