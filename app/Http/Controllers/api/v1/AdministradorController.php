@@ -34,7 +34,8 @@ class AdministradorController extends Controller
      */
     public function store(AdministradorCreateRequest $request)
     {
-        //
+        $adm = new Administrador($request->all());
+        return $this->saveObject($adm);
     }
 
     /**
@@ -57,7 +58,8 @@ class AdministradorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $adm = Administrador::findOrFail($id);
+        return $this->updateObject($adm, $request);
     }
 
     /**
@@ -68,6 +70,7 @@ class AdministradorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $adm = Administrador::findOrFail($id);
+        return $this->deleteObject($adm);
     }
 }

@@ -40,15 +40,7 @@ class ClienteController extends Controller
     public function store(ClienteCreateRequest $request)
     {
         $cliente = new Cliente($request->all());
-        $cliente->numero_compras = 0;
-        $cliente->ultima_compra = date('Y-m-d H:m:s');
-        $cliente->total_consumos = 0;
-        $guardado = $cliente->save();
-        return [
-            'message' => 'Guardado',
-            'data' => $cliente,
-            'guardado' => $guardado
-        ];
+        return $this->saveObject($cliente);
     }
 
     /**
@@ -71,7 +63,8 @@ class ClienteController extends Controller
      */
     public function update(ClienteCreateRequest $request, $id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+        return $this->updateObject($cliente, $request);
     }
 
     /**
@@ -82,6 +75,7 @@ class ClienteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cli = Cliente::findOrFail($id);
+        return $this->deleteObject($cli);
     }
 }

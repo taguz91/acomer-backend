@@ -20,6 +20,12 @@ class Cliente extends Model
         'telefono',
     ];
 
+    protected $attributes = [
+        'numero_compras' => 0,
+        'ultima_compra' => date('Y-m-d H:m:s'),
+        'totan_consumos' => 0,
+    ];
+
     public function favoritos()
     {
         return $this->hasMany('App\Models\Favorito', 'id_cliente');

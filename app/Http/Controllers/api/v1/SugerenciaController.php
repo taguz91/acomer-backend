@@ -36,7 +36,8 @@ class SugerenciaController extends Controller
      */
     public function store(SugerenciaCreateRequest $request)
     {
-        //
+        $seg = new Sugerencia($request->all());
+        return $this->saveObject($seg);
     }
 
     /**
@@ -59,7 +60,8 @@ class SugerenciaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $sug = Sugerencia::findOrFail($id);
+        return $this->updateObject($sug, $request);
     }
 
     /**
@@ -70,6 +72,7 @@ class SugerenciaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sug = Sugerencia::findOrFail($id);
+        return $this->deleteObject($sug);
     }
 }
