@@ -30,7 +30,15 @@ class ReporteController extends Controller
      
     public function store(ReporteCreateRequest $request)
     {
-        //
+        $reporte = new Reporte($request->all());
+        $reporte->fecha = date('Y-m-d H:m:s');
+        $guardado = $reporte->save();
+        
+        return[
+            'message'=>'Guardado',
+            'data'=>$reporte,
+            'guardado'=>$guardado
+        ];
     }
 
     /**
@@ -66,6 +74,10 @@ class ReporteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $res = Reporte::withTrashed()->findOrFail($id);
+        return [
+            'data' => $res,
+            'activado' => $res->restore()
+        ];
     }
 }

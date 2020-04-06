@@ -27,7 +27,13 @@ class PedidoController extends Controller
      */
     public function store(PedidoCreateRequest $request)
     {
-        //
+        $pedido = new Pedido($request->all());
+        $guardado = $pedido->save();
+        return[
+            'message'=>'Guardado',
+            'data'=>$pedido,
+            'guardado'=>$guardado
+        ];
     }
 
     /**
@@ -61,6 +67,10 @@ class PedidoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $res = Pedido::withTrashed()->findOrFail($id);
+        return [
+            'data' => $res,
+            'activado' => $res->restore()
+        ];
     }
 }

@@ -28,8 +28,8 @@ class RestauranteCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre_comercial' => 'required|max=50|min=15',
-            'nombre_fiscal' => 'required|max=50|min=15'
+            'nombre_comercial' => 'required',
+            'nombre_fiscal' => 'required'
         ];
     }
 

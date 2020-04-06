@@ -30,7 +30,17 @@ class RestauranteController extends Controller
     public function store(RestauranteCreateRequest $request)
 
     {
-        
+        $restaurante = new Restaurante($request->all());
+        $restaurante->inicio_suscripcion = date('Y-m-d H:m:s');
+        $restaurante->ultimo_pago = date('Y-m-d H:m:s');
+        $restaurante->fecha_proximo_pago = date('Y-m-d H:m:s');
+        $guardado = $restaurante->save();
+        return[
+            'message'=>'Guardado',
+            'data'=>$restaurante,
+            'guardado'=>$guardado
+        ];
+
     }
 
     /**

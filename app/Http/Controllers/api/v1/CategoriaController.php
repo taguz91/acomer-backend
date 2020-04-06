@@ -27,7 +27,13 @@ class CategoriaController extends Controller
      */
     public function store(CategoriaCreateRequest $request)
     {
-        //
+        $categoria = new Categoria($request->all());
+       $guardado = $categoria->save();
+        return[
+            'message'=>'Guardado',
+            'data'=>$categoria,
+            'guardado'=>$guardado
+        ];
     }
 
     /**
@@ -61,6 +67,10 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $res = Categoria::withTrashed()->findOrFail($id);
+        return [
+            'data' => $res,
+            'activado' => $res->restore()
+        ];
     }
 }

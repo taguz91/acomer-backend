@@ -28,7 +28,7 @@ class MesaCreateRequest extends FormRequest
         return [
             'numero' => 'required',
             'capacidad' => 'required',
-            'descripcion'  => 'required|max=100|min=20'
+            'descripcion'  => 'required'
         ];
     }
 

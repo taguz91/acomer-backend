@@ -27,7 +27,13 @@ class MesaController extends Controller
      */
     public function store(MesaCreateRequest $request)
     {
-        //
+        $mesa = new Mesa($request->all());
+          $guardado = $mesa->save();
+        return[
+            'message'=>'Guardado',
+            'data'=>$mesa,
+            'guardado'=>$guardado
+        ];
     }
 
     /**
@@ -61,6 +67,10 @@ class MesaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $res = Mesa::withTrashed()->findOrFail($id);
+        return [
+            'data' => $res,
+            'activado' => $res->restore()
+        ];
     }
 }

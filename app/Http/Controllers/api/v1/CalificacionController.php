@@ -26,7 +26,13 @@ class CalificacionController extends Controller
      */
     public function store(CalificacionCreateRequest $request)
     {
-        //
+        $calificacion = new Calificacion($request->all());
+       $guardado = $calificacion->save();
+        return[
+            'message'=>'Guardado',
+            'data'=>$calificacion,
+            'guardado'=>$guardado
+        ];   
     }
 
     /**
@@ -60,6 +66,10 @@ class CalificacionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $res = Calificacion::withTrashed()->findOrFail($id);
+        return [
+            'data' => $res,
+            'activado' => $res->restore()
+        ];
     }
 }

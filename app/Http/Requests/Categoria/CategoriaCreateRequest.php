@@ -28,7 +28,7 @@ class CategoriaCreateRequest extends FormRequest
     {
         return [
            
-            'nombre' => 'required|max=50|min=15',
+            'nombre' => 'required',
             'numero_platos' => 'required'
         ];
     }
