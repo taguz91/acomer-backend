@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api\v1;
 
+use App\Models\Reserva;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Reserva\ReservaCreateRequest;
@@ -15,7 +16,16 @@ class ReservaController extends Controller
      */
     public function index()
     {
-        //
+        return new ReservaCollection(
+            Reserva::select([
+                'id',
+                'fecha_reserva',
+                'numero_personas',
+                'total',
+                'id_cliente'
+            ])->with('cliente:id,nombre,apellido,identificacion,telefono')
+            ->paginate()
+        );
     }
 
     /**

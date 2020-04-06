@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\api\v1;
 
+use App\Models\Combo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Combo\ComboCollection;
 use App\Http\Requests\Combo\ComboCreateRequest;
 
 class ComboController extends Controller
@@ -15,7 +17,14 @@ class ComboController extends Controller
      */
     public function index()
     {
-        //
+        return new ComboCollection(
+            Combo::select([
+                'id',
+                'platos',
+                'precio_final',
+                'extra'
+            ])->paginate()
+        );
     }
 
     /**

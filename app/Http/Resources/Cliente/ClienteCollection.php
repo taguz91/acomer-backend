@@ -2,11 +2,13 @@
 
 namespace App\Http\Resources\Cliente;
 
+use App\Http\Resources\NewCollectionResponse;
 use App\Http\Resources\Cliente\ClienteResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class ClienteCollection extends ResourceCollection
 {
+    use NewCollectionResponse;
     /**
      * Transform the resource collection into an array.
      *
@@ -15,12 +17,8 @@ class ClienteCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return [
-            'status' => 200,
-            'data' => ClienteResource::collection($this->collection),
-            'meta' => [
-                'total_resultados' => $this->collection->count()
-            ]
-        ];
+        return $this->newCollectionResponse(
+            ClienteResource::collection($this->collection)
+        );
     }
 }

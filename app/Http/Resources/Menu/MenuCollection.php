@@ -3,10 +3,12 @@
 namespace App\Http\Resources\Menu;
 
 use App\Http\Resources\Menu\MenuResource;
+use App\Http\Resources\NewCollectionResponse;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class MenuCollection extends ResourceCollection
 {
+    use NewCollectionResponse;
     /**
      * Transform the resource collection into an array.
      *
@@ -15,12 +17,8 @@ class MenuCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return [
-            'status' => 200,
-            'data' => MenuResource::collection($this->collection),
-            'meta' => [
-                'total_resultados' => $this->collection->count()
-            ]
-        ];
+        return $this->newCollectionResponse(
+            MenuResource::collection($this->collection)
+        );
     }
 }

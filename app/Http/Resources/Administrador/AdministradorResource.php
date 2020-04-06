@@ -18,7 +18,7 @@ class AdministradorResource extends JsonResource
         return [
             'id' => $this->id,
             $this->mergeWhen(
-                $this->resource->relationLoaded('usuario'), 
+                $this->resource->relationLoaded('usuario') && !is_null($this->usuario), 
                 new UsuarioTblResource($this->usuario) 
             )
         ];

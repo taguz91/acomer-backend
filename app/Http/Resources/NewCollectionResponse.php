@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 trait NewCollectionResponse {
 
-  protected function newReponseCollection($data) {
+  protected function newCollectionResponse($data) {
     return [
       'status' => 200,
       'data' => $data,

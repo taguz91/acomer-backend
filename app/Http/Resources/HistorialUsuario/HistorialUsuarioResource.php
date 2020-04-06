@@ -19,9 +19,9 @@ class HistorialUsuarioResource extends JsonResource
             'id' => $this->id,
             'accion' => $this->accion,
             'plataforma' => '',
-            'fecha' => $this->created_at,
+            'fecha_creacion' => $this->created_at,
             $this->mergeWhen(
-                $this->resource->relationLoaded('usuario'), 
+                $this->resource->relationLoaded('usuario') && !is_null($this->usuario), 
                 new UsuarioTblResource($this->usuario)
             )
         ];

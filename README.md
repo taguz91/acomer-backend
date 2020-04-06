@@ -31,7 +31,23 @@ Creando los controllers: Nos serviran para las peticiones realizadas en los serv
 
 Creando un resources: Estos nos funcionan para mapear en un JSON el objeto. 
 ```
+> // Este solo nos sirve para mapear un objeto
 > php artisan make:resource NombreResource 
+> // Este nos sirve para mapear muchos objetos podemos usar el Resource dentro de este 
+> php artisan make:resource NombreCollection
+```
+
+En todos los resources de tipo collection debe utilizar el trait NewCollectionResponse. 
+```php
+use NewCollectionResponse; 
+// En la funcion toArray se debe utilizar el metodo newCollectionResponse 
+
+public function toArray($request)
+{
+    return $this->newCollectionResponse(
+        NombreResource::collection($this->collection)
+    );
+}
 ```
 
 Definir solo rutas para api: 
@@ -50,6 +66,11 @@ Creamos request: Son las resonsables de manejar los formularios, aqui programare
 ```
 > php artisan make:request Nombre<Accion>Request
 > // Acciones : Create | Update 
+```
+
+En todos nuestros request debemos utilizar el trait de FalidValidation. Solo debemos escribir el siguiente codigo en las clases request. 
+```php
+use FailedValidation; 
 ```
 
 Creamos factories: Estos nos ayudaran a poblar nuestra base de datos, generando datos de prueba. 
@@ -102,4 +123,20 @@ Activamos los objetos eliminados.
 $res = Restaurante::withTrashed()
             ->where('id', $id)
             ->restore();
+```
+
+Ejemplos de querys. 
+```php 
+return Cliente::select([
+    'id',
+    'nombre',
+    'apellido',
+    'extra' => Cliente::selectRaw('MAX(created_at)')
+        ->whereColumn('id', 'clientes.id')
+])->get();
+
+return Cliente::with(['favoritos.plato:id,url_imagen', 'sugerencias'])->get();
+return Cliente::with(['facturas.pedido.mesa'])->get();
+return Cliente::with(['facturas.pedido:id,platos'])->get();
+return Cliente::paginate(30);
 ```

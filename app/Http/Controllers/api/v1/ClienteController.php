@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Cliente\ClienteCollection;
 use App\Http\Requests\Cliente\ClienteCreateRequest;
 
 class ClienteController extends Controller
@@ -16,17 +17,18 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        // return Cliente::select([
-        //     'id',
-        //     'nombre',
-        //     'apellido',
-        //     'extra' => Cliente::selectRaw('MAX(created_at)')
-        //         ->whereColumn('id', 'clientes.id')
-        // ])->get();
-        // return Cliente::with(['favoritos.plato:id,url_imagen', 'sugerencias'])->get();
-        // return Cliente::with(['facturas.pedido.mesa'])->get();
-        // return Cliente::with(['facturas.pedido:id,platos'])->get();
-        return Cliente::paginate(30);
+        return new ClienteCollection(
+            Cliente::select([
+                'id',
+                'nombre',
+                'apellido',
+                'identificacion',
+                'telefono',
+                'numero_compras',
+                'ultima_compra',
+                'total_consumos'
+            ])-paginate()
+        );
     }
 
     /**

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\api\v1;
 
+use App\Models\Sugerencia;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Sugerencia\SugerenciaCollection;
 use App\Http\Requests\Suferencia\SugerenciaCreateRequest;
 
 class SugerenciaController extends Controller
@@ -15,7 +17,14 @@ class SugerenciaController extends Controller
      */
     public function index()
     {
-        //
+        return SugerenciaCollection(
+            Sugerencia::select([
+                'id',
+                'sugerencia',
+                'created_at'
+            ])->with('cliente:id,nombre,apellido,identificacion,telefono')
+            ->paginate()
+        );
     }
 
     /**

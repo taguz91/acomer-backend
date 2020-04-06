@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\api\v1;
 
 use Illuminate\Http\Request;
+use App\Models\Administrador;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Administrador\AdministradorCollection;
 use App\Http\Requests\Administrador\AdministradorCreateRequest;
 
 class AdministradorController extends Controller
@@ -15,7 +17,13 @@ class AdministradorController extends Controller
      */
     public function index()
     {
-        //
+        return new AdministradorCollection(
+            Administrador::select([
+                'id',
+                'id_usuario'
+            ])->with('usuario:id,nombre,correo')
+            ->paginate()
+        );
     }
 
     /**

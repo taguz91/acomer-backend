@@ -2,10 +2,12 @@
 
 namespace App\Http\Resources\Administrador;
 
+use App\Http\Resources\NewCollectionResponse;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class AdministradorCollection extends ResourceCollection
 {
+    use NewCollectionResponse;
     /**
      * Transform the resource collection into an array.
      *
@@ -14,12 +16,8 @@ class AdministradorCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return [
-            'status' => 200,
-            'data' => AdministradorResource::collection($this->collection),
-            'meta' => [
-                'total_resultados' => $this->collection->count()
-            ]
-        ];
+        return $this->newCollectionResponse(
+            AdministradorResource::collection($this->collection)
+        );
     }
 }

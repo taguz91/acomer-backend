@@ -5,6 +5,8 @@ namespace App\Http\Controllers\api\v1;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Menu\MenuResource;
+use App\Http\Resources\Menu\MenuCollection;
 use App\Http\Requests\Menu\MenuCreateRequest;
 
 class MenuController extends Controller
@@ -27,7 +29,13 @@ class MenuController extends Controller
      */
     public function store(MenuCreateRequest $request)
     {
-        //
+        return new MenuCollection(
+            MenuResource::select([
+                'id',
+                'created_at',
+                'menu'
+            ])->paginate()
+        );
     }
 
     /**

@@ -21,7 +21,7 @@ class ReservaResource extends JsonResource
             'numero_personas' => $this->numero_personas,
             'total' => $this->total,
             $this->mergeWhen(
-                $this->resource->relationLoaded('cliente'),
+                $this->resource->relationLoaded('cliente') && !is_null($this->cliente),
                 new ClienteTblResource($this->cliente)
             )
         ];

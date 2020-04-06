@@ -17,7 +17,7 @@ class HistorialUsuarioCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return $this->newReponseCollection(
+        return $this->newCollectionResponse(
             HistorialUsuarioResource::collection($this->collection),
         );
     }
