@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use App\Models\Sucursal;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Sucursal\SucursalCollection;
 use App\Http\Requests\Sucursal\SucursalCreateRequest;
 
 class SucursalController extends Controller
@@ -16,7 +17,13 @@ class SucursalController extends Controller
      */
     public function index()
     {
-        //
+        return new SucursalCollection(
+            Sucursal::select([
+                'horario_atencion',
+                'numero',
+                'direccion'
+            ])->paginate()
+        );
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use App\Models\Promocion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Promocion\PromocionCollection;
 use App\Http\Requests\Promocion\PromocionCreateRequest;
 
 class PromocionController extends Controller
@@ -16,7 +17,15 @@ class PromocionController extends Controller
      */
     public function index()
     {
-        //
+        return new PromocionCollection(
+            Promocion::select([
+                'fecha_inicio',
+                'fecha_fin',
+                'precio',
+                'descuento',
+                'extra'
+            ])->paginate()
+        );
     }
 
     /**

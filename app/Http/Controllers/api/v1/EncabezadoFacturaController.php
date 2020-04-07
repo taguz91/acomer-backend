@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use App\Models\EncabezadoFactura;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\EncabezadoFactura\EncabezadoFacturaCollection;
 use App\Http\Requests\EncabezadoFactura\EncabezadoFacturaCreateRequest;
 
 class EncabezadoFacturaController extends Controller
@@ -16,7 +17,15 @@ class EncabezadoFacturaController extends Controller
      */
     public function index()
     {
-        //
+        return new EncabezadoFacturaCollection(
+            EncabezadoFactura::select([
+                'nombre',
+                'direccion',
+                'telefono',
+                'identificacion',
+                'fecha'
+            ])->paginate()
+        );
     }
 
     /**

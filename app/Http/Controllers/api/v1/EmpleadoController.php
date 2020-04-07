@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use Illuminate\Http\Request;
 use App\Models\Empleado;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Empleado\EmpleadoCollection;
 use App\Http\Requests\Empleado\EmpleadoCreateRequest;
 
 class EmpleadoController extends Controller
@@ -16,7 +17,15 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        //
+        return new EmpleadoCollection(
+            Empleado::select([
+                'id_usuario',
+                'nombre',
+                'apellido',
+                'identificacion'
+            ])->with('usuario: id, nombre, correo')
+            ->paginate()
+        );
     }
 
     /**

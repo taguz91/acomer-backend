@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use App\Models\Favorito;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Favorito\FavoritoCollection;
 use App\Http\Requests\Favorito\FavoritoCreateRequest;
 
 class FavoritoController extends Controller
@@ -16,7 +17,11 @@ class FavoritoController extends Controller
      */
     public function index()
     {
-        //
+        return new FavoritoCollection(
+            Favorito::select([
+                'id_plato'
+            ])->paginate()
+        );
     }
 
     /**

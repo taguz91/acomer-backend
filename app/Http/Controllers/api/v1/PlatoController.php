@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use App\Models\Plato;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Plato\PlatoCollection;
 use App\Http\Requests\Plato\PlatoCreateRequest;
 
 class PlatoController extends Controller
@@ -16,7 +17,14 @@ class PlatoController extends Controller
      */
     public function index()
     {
-        //
+        return new PlatoCollection(
+            Plato::select([
+                'nombre',
+                'precio',
+                'ingredientes',
+                'url_imagen'
+            ])->paginate()
+        );
     }
 
     /**
