@@ -15,7 +15,7 @@ class ReporteResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id'=> $this->id,
+            'id_reporte'=> $this->id,
             'id_restaurante'=>$this->id_restaurante,
             'reporte'=>$this->reporte,
             'fecha'=>$this->fecha,

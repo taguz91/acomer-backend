@@ -16,7 +16,7 @@ class ReservaResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
+            'id_reserva' => $this->id,
             'fecha_reserva' => $this->fecha_reserva,
             'numero_personas' => $this->numero_personas,
             'total' => $this->total,

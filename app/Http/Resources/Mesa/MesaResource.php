@@ -16,7 +16,7 @@ class MesaResource extends JsonResource
     {
         
         return [
-            'id'=> $this->id,
+            'id_mesa'=> $this->id,
             'id_restaurante'=> $this->id_restaurante,
             'numero'=>$this->numero,
             'capacidad'=>$this->capacidad,

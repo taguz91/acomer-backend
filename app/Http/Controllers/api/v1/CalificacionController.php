@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\api\v1;
 
-use App\Http\Controllers\Controller;
 use App\Models\Calificacion;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\Calificacion\CalificacionCollection;
 use App\Http\Requests\Calificacion\CalificacionCreateRequest;
+
 class CalificacionController extends Controller
 {
     /**
@@ -15,7 +17,16 @@ class CalificacionController extends Controller
      */
     public function index()
     {
-        return Calificacion::paginate(30); 
+        return new CalificacionCollection(
+            Calificacion::select([
+                'id',
+                'id_fk',
+                'calificacion',
+                'tipo_calificacion',
+                'id_cliente'
+            ])->with('cliente:id,nombre,apellido,identificacion,telefono')
+            ->paginate()
+        ); 
     }
 
     /**
