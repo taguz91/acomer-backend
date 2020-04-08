@@ -17,7 +17,7 @@ class CategoriaCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return $this->NewCollectionResponse(
+        return $this->newCollectionResponse(
            CategoriaResource::collection($this->collection)
         );
     }

@@ -17,6 +17,7 @@ class CreatePromocionesTable extends Migration
             $table->id();
             $table->bigInteger('id_restaurante');
             $table->bigInteger('id_fk');
+            $table->integer('tipo_promocion');
             $table->timestamp('fecha_inicio');
             $table->timestamp('fecha_fin');
             $table->double('precio', 10, 2);

@@ -26,7 +26,13 @@ class PromocionCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id_fk' => 'required|integer',
+            'tipo_promocion' => 'required|integer',
+            'fecha_inicio' => 'required|datetime',
+            'fecha_fin' => 'required|datetime',
+            'precio' => 'required',
+            'descuento' => 'required|integer',
+            'extra' => 'required|json'
         ];
     }
 }

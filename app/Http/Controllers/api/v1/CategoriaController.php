@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\api\v1;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Categoria;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\Categoria\CategoriaCollection;
 use App\Http\Requests\Categoria\CategoriaCreateRequest;
 
 class CategoriaController extends Controller
@@ -16,7 +17,13 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        return Categoria::paginate(30); 
+        return new CategoriaCollection(
+            Categoria::select([
+                'id_categoria',
+                'nombre',
+                'numero_platos'
+            ])->paginate()
+        ); 
     }
 
     /**
@@ -29,8 +36,6 @@ class CategoriaController extends Controller
     {
         $categoria = new Categoria($request->all());
         return $this->saveObject($categoria);
-       
-
     }
 
     /**

@@ -13,6 +13,7 @@ class Promocion extends Model
 
     protected $fillable = [
         'id_fk',
+        'tipo_promocion',
         'precio',
         'descuento',
         'extra',

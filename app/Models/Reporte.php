@@ -16,14 +16,9 @@ class Reporte extends Model
         'nombre'
     ];
 
-    protected $attributes = [
-        'fecha' =>  date('Y-m-d H:m:s'
-    ];
-   
-
-    #tranformar el json en un array
+    # tranformar el json en un array
     public function getReporteAttribute($value){
-        return json_decode($value,true);
+        return json_decode($value, true);
     }
 
     public function restaurante(){

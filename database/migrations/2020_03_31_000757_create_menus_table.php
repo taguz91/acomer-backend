@@ -16,6 +16,9 @@ class CreateMenusTable extends Migration
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_restaurante');
+            $table->string('nombre');
+            $table->string('mes_inicio')->nullable();
+            $table->string('mes_fin')->nullable();
             $table->json('menu');
             $table->timestamps();
             $table->softDeletes();

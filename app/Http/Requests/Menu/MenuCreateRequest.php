@@ -27,7 +27,10 @@ class MenuCreateRequest extends FormRequest
     {
         return [
             'id_restaurante' => 'required|integer',
-            'menu' => 'required|json'
+            'nombre' => 'required',
+            'menu' => 'required|json',
+            'mes_inicio' => 'required',
+            'mes_fin' => 'required'
         ];
     }
 

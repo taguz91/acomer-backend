@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\MesaDia;
+namespace App\Http\Resources\Mesa;
 
 use App\Http\Resources\NewCollectionResponse;
 use App\Http\Resources\Mesa\MesaResource;

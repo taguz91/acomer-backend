@@ -26,7 +26,8 @@ class MenuDiaCreateRequest extends FormRequest
     public function rules()
     {
         return [      
-            'menu_dia' => 'required',
+            'menu_dia' => 'required|json',
+            'fechas' => 'required|json',
         ];
     }
 

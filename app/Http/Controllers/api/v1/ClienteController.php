@@ -40,6 +40,7 @@ class ClienteController extends Controller
     public function store(ClienteCreateRequest $request)
     {
         $cliente = new Cliente($request->all());
+        $cliente->ultima_compra = date('Y-m-d H:m:s');
         return $this->saveObject($cliente);
     }
 

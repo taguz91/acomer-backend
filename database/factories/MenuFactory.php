@@ -9,7 +9,10 @@ function getRandomNumsFaker($faker) {
     $values = array();
     $max = $faker->randomDigitNotNull; 
     for ($i = 0; $i < $max; $i++) {
-        $values[] = $faker->unique()->numberBetween(1 , $max + 10000);
+        $values[] = [
+            'id' => $faker->unique()->numberBetween(1 , $max + 10000),
+            'tipo' => $faker->numberBetween(1 , 2)
+        ];
     }
     return $values;
 }
@@ -31,6 +34,9 @@ $factory->define(Menu::class, function (Faker $faker) {
 
     return [
         'id_restaurante' => $faker->numberBetween(1, 500),
+        'nombre' => $faker->sentence(3),
+        'mes_inicio' => $faker->month . '/' . $faker->dayOfMonth,
+        'mes_fin' => $faker->month . '/' . $faker->dayOfMonth,
         'menu' => json_encode($menu)
     ];
 });

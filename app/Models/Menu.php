@@ -12,6 +12,9 @@ class Menu extends Model
     protected $table = 'menus';
 
     protected $fillable = [
+        'nombre',
+        'mes_inicio',
+        'mes_fin',
         'menu'
     ];
 
