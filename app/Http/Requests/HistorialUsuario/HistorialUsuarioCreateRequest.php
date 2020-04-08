@@ -31,31 +31,10 @@ class HistorialUsuarioCreateRequest extends FormRequest
         ];
     }
 
-    public function messages() {
-        return [
-            'id_usuario.required' => 'El id de usuario es obligatorio.',
-            'id_usuario.integer' => 'El id del usuario debe ser un entero.',
-            'accion.required' => 'La acción es requrerida.',
-            'accion.string' => 'La acción debe ser un string valido.'
-        ];
-    }
-
     public function filters() {
         return [
             'accion' => 'trim|escape'
         ];
-    }
-
-    protected function failedValidation(Validator $validator){
-        $errors = (new ValidationException($validator))->errors();
-        throw new HttpResponseException(
-            response()->json(
-                [
-                    'errores' => $errors
-                ],
-                JsonResponse::HTTP_UNPROCESSABLE_ENTITY
-            )
-        );
     }
 
 }

@@ -15,7 +15,7 @@ class HistorialUsuarioUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,7 +26,13 @@ class HistorialUsuarioUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'accion' => 'required|string',
+        ];
+    }
+
+    public function filters() {
+        return [
+            'accion' => 'trim|escape'
         ];
     }
 }

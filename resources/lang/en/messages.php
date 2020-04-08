@@ -8,6 +8,7 @@ return [
 
   'unauthorized' => 'Unauthorized for this action.',
   'objectnotfound' => 'Object not found.',
-  'notfound' => 'Not found.'
+  'notfound' => 'Not found.',
+  'invalidIDParameter' => 'Invalid id.',
 
 ];

@@ -8,6 +8,7 @@ return [
 
   'unauthorized' => 'No tiene permiso para realizar esta acción.',
   'objectnofound' => 'Objeto no encontrado.',
-  'notfound' => 'Petición no encontrada.'
+  'notfound' => 'Petición no encontrada.',
+  'invalidIDParameter' => 'id invalido.',
 
 ];

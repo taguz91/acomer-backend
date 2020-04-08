@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Throwable;
+use Illuminate\Database\QueryException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
@@ -72,6 +73,13 @@ class Handler extends ExceptionHandler
                 'status' => 404,
                 'mensaje' => __('messages.notfound')
             ], 404);
+        }
+
+        if ($exception instanceof QueryException) {
+            return response()->json([
+                'status' => 400,
+                'mensaje' => __('messages.invalidIDParameter')
+            ], 400);
         }
 
         return parent::render($request, $exception);

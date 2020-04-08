@@ -7,6 +7,7 @@ use App\Models\HistorialUsuario;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\HistorialUsuario\HistorialUsuarioCollection;
 use App\Http\Requests\HistorialUsuario\HistorialUsuarioCreateRequest;
+use App\Http\Requests\HistorialUsuario\HistorialUsuarioUpdateRequest;
 
 class HistorialUsuarioController extends Controller
 {
@@ -61,7 +62,7 @@ class HistorialUsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(HistorialUsuarioUpdateRequest $request, $id)
     {
         $his = HistorialUsuario::findOrFail($id);
         return $this->updateObject($his, $request);
