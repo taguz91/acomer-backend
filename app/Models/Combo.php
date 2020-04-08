@@ -14,7 +14,8 @@ class Combo extends Model
     protected $fillable = [
         'platos',
         'precio_final',
-        'extra'
+        'extra',
+        'nombre'
     ];
 
     public function getPlatosAttribute($value) {

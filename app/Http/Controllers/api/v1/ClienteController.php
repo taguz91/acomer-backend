@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Cliente\ClienteCollection;
 use App\Http\Requests\Cliente\ClienteCreateRequest;
+use App\Http\Requests\Cliente\ClienteUpdateRequest;
 
 class ClienteController extends Controller
 {
@@ -63,7 +64,7 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ClienteCreateRequest $request, $id)
+    public function update(ClienteUpdateRequest $request, $id)
     {
         $cliente = Cliente::findOrFail($id);
         return $this->updateObject($cliente, $request);

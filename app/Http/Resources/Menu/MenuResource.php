@@ -17,7 +17,9 @@ class MenuResource extends JsonResource
         return [
             'id_menu' => $this->id,
             'fecha_creacion' => $this->created_at,
-            'menu' => $this->menu
+            'nombre' => $this->nombre,
+            'mes_inicio' => $this->mes_inicio,
+            'mes_fin' => $this->mes_fin
         ];
     }
 }

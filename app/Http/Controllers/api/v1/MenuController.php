@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Menu\MenuResource;
 use App\Http\Resources\Menu\MenuCollection;
 use App\Http\Requests\Menu\MenuCreateRequest;
+use App\Http\Requests\Menu\MenuUpdateRequest;
 
 class MenuController extends Controller
 {
@@ -19,10 +20,12 @@ class MenuController extends Controller
     public function index()
     {
         return new MenuCollection(
-            MenuResource::select([
+            Menu::select([
                 'id',
                 'created_at',
-                'menu'
+                'nombre',
+                'mes_inicio',
+                'mes_fin'
             ])->paginate()
         );
     }
@@ -47,7 +50,7 @@ class MenuController extends Controller
      */
     public function show($id)
     {
-        $menu = new Menu($request->all());
+        $menu = Menu::findOrFail($id);
         return $this->showResponse($menu);
     }
 
@@ -58,7 +61,7 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MenuUpdateRequest $request, $id)
     {
         $menu = Menu::findOrFail($id);
         return $this->updateObject($menu, $request);

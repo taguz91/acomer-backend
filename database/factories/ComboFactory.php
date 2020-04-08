@@ -28,7 +28,7 @@ function getJSONPlatos($faker) {
     $max = $faker->randomDigitNotNull; 
     for ($i = 0; $i < $max; $i++) {
         $values[] = [
-            'id' => $faker->unique()->numberBetween(1 , $max + 10000),
+            'id' => $faker->numberBetween(1 , $max + 10000),
             'tipo' => $faker->numberBetween(1 , 2)
         ];
     }
@@ -38,6 +38,7 @@ function getJSONPlatos($faker) {
 $factory->define(Combo::class, function (Faker $faker) {
     return [
         'id_restaurante' => $faker->numberBetween(1, 500),
+        'nombre' => $faker->sentence(4),
         'platos' => json_encode(getJSONPlatos($faker)),
         'precio_final' => $faker->randomFloat,
         'extra' => json_encode(getJSONExtraCombo($faker))

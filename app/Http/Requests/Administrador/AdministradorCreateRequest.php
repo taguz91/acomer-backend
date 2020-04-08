@@ -26,7 +26,8 @@ class AdministradorCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            ''
+            'id_usuario' => 'required|integer',
+            'id_rol' => 'required|integer'
         ];
     }
 }

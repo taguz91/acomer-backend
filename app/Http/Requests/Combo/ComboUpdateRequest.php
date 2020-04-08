@@ -15,7 +15,7 @@ class ComboUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,7 +26,10 @@ class ComboUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id_restaurante' => 'required|integer',
+            'id_platos' => 'required|json',
+            'precio_final' => 'required|between:0,99.9',
+            'extra' => 'json'
         ];
     }
 }

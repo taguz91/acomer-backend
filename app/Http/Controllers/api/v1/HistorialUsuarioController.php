@@ -52,7 +52,7 @@ class HistorialUsuarioController extends Controller
     public function show($id)
     {
         $his = HistorialUsuario::findOrFail($id);
-        return $this->viewResponse($his);
+        return $this->showResponse($his);
     }
 
     /**

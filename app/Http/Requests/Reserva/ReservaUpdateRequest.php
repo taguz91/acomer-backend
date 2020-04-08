@@ -15,7 +15,7 @@ class ReservaUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,7 +26,11 @@ class ReservaUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id_mesa' => 'required|integer',
+            'fecha_reserva' => 'required|date_format:Y-m-d H:m:s',
+            'numero_personas' => 'required|integer',
+            'platos' => 'required|json',
+            'total' => 'required|between:0,99.9'
         ];
     }
 }

@@ -19,6 +19,10 @@ class Reserva extends Model
         'codigo_qr'
     ];
 
+    public function getPlatosAttribute($value) {
+        return json_decode($value, true);
+    }
+
     public function restaurante(){
         return $this->belongsTo('App\Models\Restaurante', 'id_restaurante');
     }
@@ -26,6 +30,11 @@ class Reserva extends Model
     public function mesa()
     {
         return $this->belongsTo('App\Models\Mesa', 'id_mesa');
+    }
+
+    public function cliente() 
+    {
+        return $this->belongsTo('App\Models\Cliente', 'id_cliente');
     }
 
 }

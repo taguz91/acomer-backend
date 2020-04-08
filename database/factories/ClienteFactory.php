@@ -11,7 +11,7 @@ $factory->define(Cliente::class, function (Faker $faker) {
         'nombre' => $faker->firstName,
         'apellido' => $faker->lastName,
         'identificacion' => $faker->creditCardNumber,
-        'telefono' => '00000',
+        'telefono' => $faker->e164PhoneNumber,
         'numero_compras' => $faker->randomDigit,
         'ultima_compra' => $faker->dateTime,
         'total_consumos' => $faker->randomFloat     

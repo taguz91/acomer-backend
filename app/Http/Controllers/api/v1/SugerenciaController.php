@@ -6,7 +6,8 @@ use App\Models\Sugerencia;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Sugerencia\SugerenciaCollection;
-use App\Http\Requests\Suferencia\SugerenciaCreateRequest;
+use App\Http\Requests\Sugerencia\SugerenciaCreateRequest;
+use App\Http\Requests\Sugerencia\SugerenciaUpdateRequest;
 
 class SugerenciaController extends Controller
 {
@@ -49,7 +50,7 @@ class SugerenciaController extends Controller
     public function show($id)
     {
         $sug = Sugerencia::findOrFail($id);
-        return $this->showResponse($sug, $request);
+        return $this->showResponse($sug);
     }
 
     /**
@@ -59,7 +60,7 @@ class SugerenciaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SugerenciaUpdateRequest $request, $id)
     {
         $sug = Sugerencia::findOrFail($id);
         return $this->updateObject($sug, $request);

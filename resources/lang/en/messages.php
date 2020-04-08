@@ -10,5 +10,6 @@ return [
   'objectnotfound' => 'Object not found.',
   'notfound' => 'Not found.',
   'invalidIDParameter' => 'Invalid id.',
+  'methodNotFound' => 'Method not found.',
 
 ];

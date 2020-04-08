@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Suferencia;
+namespace App\Http\Requests\Sugerencia;
 
 use App\Http\Requests\FailedValidation;
 use Illuminate\Foundation\Http\FormRequest;

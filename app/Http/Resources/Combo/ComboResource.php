@@ -16,9 +16,10 @@ class ComboResource extends JsonResource
     {
         return [
             'id_combo' => $this->id,
-            'platos' => $this->platos,
+            'nombre' => $this->nombre,
+            'platos' => sizeof($this->platos),
             'precio' => $this->precio_final,
-            'extra' => $this->extra,
+            'extra' => sizeof($this->extra),
         ];
     }
 }

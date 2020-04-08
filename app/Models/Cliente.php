@@ -44,6 +44,11 @@ class Cliente extends Model
         return $this->hasMany('App\Models\Sugerencia', 'id_cliente');
     }
 
+    public function reservas()
+    {
+        return $this->hasMany('App\Models\Reserva', 'id_cliente');
+    }
+
     public function usuario(){
         return $this->belongsTo('App\Models\Usuario', 'id_usuario');
     }

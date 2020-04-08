@@ -7,6 +7,7 @@ use App\Models\Administrador;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Administrador\AdministradorCollection;
 use App\Http\Requests\Administrador\AdministradorCreateRequest;
+use App\Http\Requests\Administrador\AdministradorUpdateRequest;
 
 class AdministradorController extends Controller
 {
@@ -47,7 +48,7 @@ class AdministradorController extends Controller
     public function show($id)
     {
         $adm = Administrador::findOrFail($id);
-        return $this->showReponse($adm);
+        return $this->showResponse($adm);
     }
 
     /**
@@ -57,7 +58,7 @@ class AdministradorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AdministradorUpdateRequest $request, $id)
     {
         $adm = Administrador::findOrFail($id);
         return $this->updateObject($adm, $request);

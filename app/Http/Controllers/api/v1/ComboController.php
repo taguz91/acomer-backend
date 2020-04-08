@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Combo\ComboCollection;
 use App\Http\Requests\Combo\ComboCreateRequest;
+use App\Http\Requests\Combo\ComboUpdateRequest;
 
 class ComboController extends Controller
 {
@@ -20,6 +21,7 @@ class ComboController extends Controller
         return new ComboCollection(
             Combo::select([
                 'id',
+                'nombre',
                 'platos',
                 'precio_final',
                 'extra'
@@ -35,7 +37,8 @@ class ComboController extends Controller
      */
     public function store(ComboCreateRequest $request)
     {
-        //
+        $com = new Combo($request->all());
+        return $this->saveObject($com);
     }
 
     /**
@@ -46,7 +49,8 @@ class ComboController extends Controller
      */
     public function show($id)
     {
-        //
+        $com = Combo::findOrFail($id);
+        return $this->showResponse($com);
     }
 
     /**
@@ -56,9 +60,10 @@ class ComboController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ComboUpdateRequest $request, $id)
     {
-        //
+        $com = Combo::findOrFail($id);
+        return $this->updateObject($com, $request);
     }
 
     /**
@@ -69,6 +74,7 @@ class ComboController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $com = Combo::findOrFail($id);
+        return $this->deleteObject($com);
     }
 }

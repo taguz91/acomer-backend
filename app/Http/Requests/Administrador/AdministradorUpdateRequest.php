@@ -15,7 +15,7 @@ class AdministradorUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,7 +26,7 @@ class AdministradorUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id_rol' => 'required|integer'
         ];
     }
 }

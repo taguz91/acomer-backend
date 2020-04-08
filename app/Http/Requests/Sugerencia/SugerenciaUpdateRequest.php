@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Suferencia;
+namespace App\Http\Requests\Sugerencia;
 
 use App\Http\Requests\FailedValidation;
 use Illuminate\Foundation\Http\FormRequest;
@@ -15,7 +15,7 @@ class SugerenciaUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,7 +26,14 @@ class SugerenciaUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id_cliente' => 'integer',
+            'sugerencia' => 'required|string'
+        ];
+    }
+
+    public function filters() {
+        return [
+            'sugerencia' => 'trim|escape'
         ];
     }
 }

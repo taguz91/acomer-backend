@@ -31,7 +31,7 @@ class ClienteCreateRequest extends FormRequest
             'apellido' => 'required|max:50|min:3|string',
             'identificacion' => 'required|max:20|min:8|alpha_num|unique:clientes',
             'telefono' => 'required|digits_between:7,20',
-            'id_usuario' => 'required',
+            'id_usuario' => 'required|unique:usuarios',
         ];
     }
 

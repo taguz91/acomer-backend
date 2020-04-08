@@ -8,6 +8,7 @@ use Illuminate\Foundation\Http\FormRequest;
 class ClienteUpdateRequest extends FormRequest
 {
     use FailedValidation;
+ 
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -15,7 +16,7 @@ class ClienteUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,7 +27,26 @@ class ClienteUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nombre' => 'required|max:50|min:3|string',
+            'apellido' => 'required|max:50|min:3|string',
+            'identificacion' => 'required|max:20|min:8|alpha_num|unique:clientes',
+            'telefono' => 'required|digits_between:7,20',
+        ];
+    }
+
+    public function attributes() {
+        return [
+            'identificacion' => 'id',
+            'telefono' => 'teléfono'
+        ];
+    }
+
+    public function filters() {
+        return [
+            'nombre' => 'trim|capitalize|escape',
+            'apellido' => 'trim|capitalize|escape',
+            'identificacion' => 'trim',
+            'telefono' => 'trim'
         ];
     }
 }

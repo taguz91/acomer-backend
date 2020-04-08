@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Reserva;
 
 use App\Http\Resources\NewCollectionResponse;
+use App\Http\Resources\Reserva\ReservaResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class ReservaCollection extends ResourceCollection
@@ -18,7 +19,7 @@ class ReservaCollection extends ResourceCollection
     {
         return [
             $this->newCollectionResponse(
-                ReservaCollection::collection($this->collection),
+                ReservaResource::collection($this->collection),
             )
         ];
     }

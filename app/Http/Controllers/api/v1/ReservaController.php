@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Reserva\ReservaCollection;
 use App\Http\Requests\Reserva\ReservaCreateRequest;
+use App\Http\Requests\Reserva\ReservaUpdateRequest;
 
 class ReservaController extends Controller
 {
@@ -49,7 +50,7 @@ class ReservaController extends Controller
      */
     public function show($id)
     {
-        $res = Reserva::findOrFail($request->all());
+        $res = Reserva::findOrFail($id);
         return $this->showResponse($res);
     }
 
@@ -60,7 +61,7 @@ class ReservaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ReservaUpdateRequest $request, $id)
     {
         $res = Reserva::findOrFail($id);
         return $this->updateObject($res, $request);
