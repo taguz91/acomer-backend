@@ -41,5 +41,8 @@ Route::namespace('api\v1')->group(function () {
         Route::apiResource('plato', 'PlatoController');
         Route::apiResource('encabezado/factura', 'EncabezadoFacturaController');
         Route::apiResource('promocion', 'PromocionController');
+        Route::apiResource('producto', 'ProductoController');
+        Route::apiResource('url', 'UrlController');
+        Route::apiResource('rol', 'RolController');
     });
 });

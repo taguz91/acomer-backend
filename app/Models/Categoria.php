@@ -19,5 +19,15 @@ class Categoria extends Model
     public function restaurante(){
         return $this->belongsTo('App\Models\Restaurante', 'id_restaurante');
     }
+
+    public function platos()
+    {
+        return $this->hasMany('App\Models\Plato', 'id_categoria');
+    }
+
+    public function productos()
+    {
+        return $this->hasMany('App\Models\Producto', 'id_categoria');
+    }
     
 }
