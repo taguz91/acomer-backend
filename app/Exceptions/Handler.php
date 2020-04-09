@@ -58,21 +58,24 @@ class Handler extends ExceptionHandler
         if ($exception instanceof ModelNotFoundException) {
             return response()->json([
                 'status' => 404,
-                'mensaje' => __('messages.objectnotfound')
+                'mensaje' => __('messages.objectnotfound'),
+                'exception' => $exception->getMessage()
             ], 404);
         }
 
         if ($exception instanceof AuthorizationException) {
             return response()->json([
                 'status' => 403,
-                'mensaje' => __('messages.unauthorized')
+                'mensaje' => __('messages.unauthorized'),
+                'exception' => $exception->getMessage()
             ], 403);
         }
 
         if ($exception instanceof NotFoundHttpException) {
             return response()->json([
                 'status' => 404,
-                'mensaje' => __('messages.notfound')
+                'mensaje' => __('messages.notfound'),
+                'exception' => $exception->getMessage()
             ], 404);
         }
 
