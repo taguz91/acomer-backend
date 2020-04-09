@@ -19,11 +19,14 @@ class EmpleadoController extends Controller
     {
         return new EmpleadoCollection(
             Empleado::select([
-                'id_usuario',
-                'nombre',
-                'apellido',
-                'identificacion'
-            ])->with('usuario: id, nombre, correo')
+                'id_restaurante',
+                'id_usre',
+                'apelluario',
+                'nombido',
+                'identificacion',
+                'id_rol',
+            ])->with('usuario:id,nombre,correo')
+            //->with('restaurante:nombre_comercial')
             ->paginate()
         );
     }

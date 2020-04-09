@@ -3,6 +3,8 @@
 namespace App\Http\Resources\Sucursal;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\Restaurante\RestauranteNombreResource;
+
 
 class SucursalResource extends JsonResource
 {
@@ -19,8 +21,12 @@ class SucursalResource extends JsonResource
             'horario_atencion' => $this->horario_atencion,
             'numero' => $this->numero,
             'direccion' => $this->direccion,
-            'latitud' => $this->latitud,
-            'longitud' => $this->longitud
+            //'latitud' => $this->latitud,
+            //'longitud' => $this->longitud,
+            $this->mergeWhen(
+                $this->resource->relationLoaded('restaurante') && !is_null($this->restaurante),
+                new RestauranteNombreResource($this->restaurante)
+            )
         ];
     }
 }

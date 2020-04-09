@@ -19,7 +19,8 @@ class FavoritoController extends Controller
     {
         return new FavoritoCollection(
             Favorito::select([
-                'id_plato'
+                'id_plato',
+                'id_cliente'
             ])->paginate()
         );
     }

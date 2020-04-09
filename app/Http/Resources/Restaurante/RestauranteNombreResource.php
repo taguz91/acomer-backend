@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Favorito;
+namespace App\Http\Resources\Restaurante;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class FavoritoResource extends JsonResource
+class RestauranteNombreResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,9 +14,8 @@ class FavoritoResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            'id_plato' => $this->id_plato,
-            'id_cliente' => $this->id_cliente
+        return[
+            'nombre_comercial' => $this->nombre_comercial
         ];
     }
 }
