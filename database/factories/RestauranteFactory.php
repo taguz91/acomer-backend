@@ -7,6 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Restaurante::class, function (Faker $faker) {
     return [
+        'id_usuario' => $faker->numberBetween(1, 500),
         'nombre_comercial' => $faker->name, 
         'nombre_fiscal' => $faker->company,
         'inicio_suscripcion' => $faker->dateTime,

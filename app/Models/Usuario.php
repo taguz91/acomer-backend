@@ -36,4 +36,9 @@ class Usuario extends Model
         return $this->hasOne('App\Models\Administrador', 'id_usuario');
     }
 
+    public function restaraunte()
+    {
+        return $this->hasOne('App\Models\Restaurante', 'id_usuario');
+    }
+
 }

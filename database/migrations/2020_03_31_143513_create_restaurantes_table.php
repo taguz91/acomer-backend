@@ -15,6 +15,7 @@ class CreateRestaurantesTable extends Migration
     {
         Schema::create('restaurantes', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('id_usuario');
             $table->string('nombre_comercial', 50);
             $table->string('nombre_fiscal', 50);
             $table->timestamp('inicio_suscripcion')->nullable();

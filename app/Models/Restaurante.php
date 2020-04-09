@@ -15,13 +15,13 @@ class Restaurante extends Model
     protected $fillable = [
         'nombre_comercial',
         'nombre_fiscal',
+        'id_usuario'
     ];
 
-    // protected $attributes = [
-    //     'inicio_suscripcion' =>  date('Y-m-d H:m:s'),
-    //     'ultimo_pago' => date('Y-m-d H:m:s'),
-    //     'fecha_proximo_pago' =>  date('Y-m-d H:m:s')
-    // ];
+    public function usuario()
+    {
+        return $this->belongsTo('App\Models\Usuario', 'id_usuario');
+    }
 
     public function categorias()
     {

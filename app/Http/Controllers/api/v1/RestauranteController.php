@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\api\v1;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Restaurante;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\Restaurante\RestauranteCollection;
 use App\Http\Requests\Restaurante\RestauranteCreateRequest;
 
 class RestauranteController extends Controller
@@ -16,9 +17,21 @@ class RestauranteController extends Controller
      */
     public function index()
     {
-        return Restaurante::paginate(30); 
+        // return Restaurante::paginate(30); 
         // Solos los eliminados 
         // return Restaurante::onlyTrashed()->get();
+        return new RestauranteCollection(
+            Restaurante::select([
+                'id',
+                'nombre_comercial',
+                'nombre_fiscal',
+                'inicio_suscripcion',
+                'ultimo_pago',
+                'fecha_proximo_pago',
+                'id_usuario'
+            ])->with('usuario:id,nombre,correo')
+            ->paginate()
+        );
     }
 
     /**
