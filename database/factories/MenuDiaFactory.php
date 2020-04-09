@@ -31,8 +31,6 @@ function getExtra($faker) {
 
 function getJSONMenuDia($faker) {
     return [
-        'descripcion' => $faker->sentence(5),
-        'precio' => $faker->randomFloat(2),
         'extra' => getExtra($faker)
     ];
 }
@@ -40,6 +38,8 @@ function getJSONMenuDia($faker) {
 $factory->define(MenuDia::class, function (Faker $faker) {
     return [
         'id_restaurante' => $faker->numberBetween(1, 500),
+        'descripcion' => $faker->sentence(5),
+        'precio' => $faker->randomFloat(2),
         'menu_dia' => json_encode(getJSONMenuDia($faker)),
         'fechas' => json_encode(getJSONFechas($faker))
     ];

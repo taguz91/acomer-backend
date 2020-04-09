@@ -16,6 +16,8 @@ class CreateMenuDiaTable extends Migration
         Schema::create('menu_dia', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_restaurante');
+            $table->string('descripcion', 255);
+            $table->double('precio', 10, 2);
             $table->json('menu_dia');
             $table->json('fechas');
             $table->timestamps();

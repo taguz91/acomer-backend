@@ -45,8 +45,6 @@ class RestauranteController extends Controller
     {
         $restaurante = new Restaurante($request->all());
         return $this->saveObject($restaurante);
-       
-
     }
 
     /**
