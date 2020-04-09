@@ -18,7 +18,7 @@ class MenuDiaCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return $this->NewCollectionResponse(
+        return $this->newCollectionResponse(
             MenuDiaResource::collection($this->collection)
         );
     }

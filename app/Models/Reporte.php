@@ -13,7 +13,9 @@ class Reporte extends Model
 
     protected $fillable = [
         'reporte',
-        'nombre'
+        'nombre',       
+        'id_restaurante',
+        'fecha' //revisar la fecha deberia guardar automaticamente
     ];
 
     # tranformar el json en un array

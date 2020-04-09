@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Mesa;
 use App\Http\Requests\Mesa\MesaCreateRequest;
+use App\Http\Resources\Mesa\MesaCollection;
 
 class MesaController extends Controller
 {
@@ -16,7 +17,16 @@ class MesaController extends Controller
      */
     public function index()
     {
-        return Mesa::paginate(30); 
+        return new MesaCollection(
+            Mesa::select([
+                'id',
+                'numero',
+                'capacidad',
+                'descripcion',
+                'id_restaurante'
+            ])->with('restaurante:id,nombre_comercial')
+            ->paginate()
+            );
     }
 
     /**

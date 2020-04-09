@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pedido;
 use App\Http\Requests\Pedido\PedidoCreateRequest;
+use App\Http\Resources\Pedido\PedidoCollection;
 
 class PedidoController extends Controller
 {
@@ -16,7 +17,19 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        return Pedido::paginate(30); 
+        return new PedidoCollection(
+            Pedido::select([
+                'id',
+                'id_restaurante',
+                'id_empleado',
+                'id_mesa',
+                'platos',
+                'notas',
+            ])->with('mesa:id,numero,capacidad')
+            ->with('empleado:id,identificacion,nombre')
+            ->paginate()
+
+        );
     }
 
     /**

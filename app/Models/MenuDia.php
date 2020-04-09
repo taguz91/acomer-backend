@@ -14,7 +14,9 @@ class MenuDia extends Model
     protected $fillable = [
         'id_restaurante',
         'menu_dia',
-        'fechas'
+        'fechas',
+        'descripcion',
+        'precio'
     ];
 
     public function getMenuDiaAttribute($value){

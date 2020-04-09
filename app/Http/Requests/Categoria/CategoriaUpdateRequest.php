@@ -15,7 +15,7 @@ class CategoriaUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,10 +23,39 @@ class CategoriaUpdateRequest extends FormRequest
      *
      * @return array
      */
+  
     public function rules()
     {
         return [
-            //
+           
+            'nombre' => 'required|max:20|min:4',
+            'numero_platos' => 'required|integer'
+        ];
+    }
+    public function messages(){
+        return [
+            #validacion nombre
+            'nombre.required' => 'El :attribute es obligatorio', 
+            'nombre.min' => 'El :attribute debe tener minimo 4 caracteres',
+            'nombre.max' => 'El :attribute no puede tener mas de 20 caracteres',
+            #validacion numero_platos
+            'numero_platos.required' => 'El :attribute es obligatorio',
+            'numero_platos.integer' => 'El :attribute no es un numero'
+           
+            
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'nombre' => 'Nombre Categoria',
+        ];
+    }
+
+    public function filters(){
+        return [
+            'nombre' => 'trim|capitalize|escape'
         ];
     }
 }

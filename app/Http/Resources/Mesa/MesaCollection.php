@@ -17,7 +17,7 @@ class MesaCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return $this->NewCollectionResponse(
+        return $this->newCollectionResponse(
             MesaResource::collection($this->collection)
         );
     }

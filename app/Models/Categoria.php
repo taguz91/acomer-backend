@@ -13,7 +13,8 @@ class Categoria extends Model
 
     protected $fillable = [
        'nombre',
-       'numero_platos'
+       'numero_platos',
+       'id_restaurante' 
     ];
 
     public function restaurante(){

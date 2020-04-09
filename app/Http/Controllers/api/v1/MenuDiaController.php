@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\MenuDia;
 use App\Http\Requests\MenuDia\MenuDiaCreateRequest;
+use App\Http\Resources\MenuDia\MenuDiaCollection;
 
 class MenuDiaController extends Controller
 {
@@ -16,7 +17,16 @@ class MenuDiaController extends Controller
      */
     public function index()
     {
-        return MenuDia::paginate(30); 
+        return new MenuDiaCollection(
+            MenuDia::select([
+                'id',
+                'descripcion',
+                'precio',
+                'id_restaurante'
+                
+            ])->with('restaurante:id,nombre_comercial')
+            ->paginate()
+        );
     }
 
     /**

@@ -15,7 +15,8 @@ class Pedido extends Model
         'id_empleado',
         'id_mesa',
         'platos',
-        'notas'
+        'notas',
+        'id_restaurante'
     ];
 
     public function getNotasAttribute($value){

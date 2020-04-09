@@ -34,6 +34,27 @@ class CalificacionCreateRequest extends FormRequest
         ];
     }
 
+    public function messages(){
+        return [
+            #validacion id_fk
+            'id_fk.required' => 'El :attribute es obligatorio', 
+            'id_fk.integer' => 'El :attribute no es un numero',
+            #validacion id_cliente
+            'id_cliente' => 'El :attribute es obligatorio', 
+            'id_cliente' => 'El :attribute no es un numero',
+            #validacion calificacion
+            'calificacion' => 'El :attribute es obligatorio', 
+            'califacacion' => 'El :attribute no es un numero',
+            
+            #validacion tipo_califacion
+            'tipo_calificacion' => 'El :attribute es obligatorio'
+            
+           
+           
+            
+        ];
+    }
+
     public function attributes()
     {
         return [

@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\MenuDia;
 
+use App\Http\Resources\Restaurante\RestauranteResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class MenuDiaResource extends JsonResource
@@ -16,10 +17,14 @@ class MenuDiaResource extends JsonResource
     {
         return [
             'id_menu_dia' => $this->id,
-            'id_restaurante' => $this->id_restaurante,
+            // 'id_restaurante' => $this->id_restaurante,
             'menu_dia' => $this->menu_dia,
             'fecha_inicio' => $this->fecha_inicio,
             'fecha_fin' => $this->fecha_fin,
+            $this->mergeWhen(
+                $this->resource->relationLoaded('restaurante') && !is_null($this->restaurante),
+                new RestauranteResource($this->restaurante)
+            )
         ];
     }
 }

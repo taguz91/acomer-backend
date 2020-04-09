@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Reporte;
 use App\Http\Requests\Reporte\ReporteCreateRequest;
-
+use App\Http\Resources\Reporte\ReporteCollection;
 
 class ReporteController extends Controller
 {
@@ -17,7 +17,16 @@ class ReporteController extends Controller
      */
     public function index()
     {
-        return Reporte::paginate(30); 
+        return new ReporteCollection(
+            Reporte::select([
+                'id',
+                'reporte',
+                'fecha',
+                'nombre',
+                 'id_restaurante'
+            ])->with('restaurante:id,nombre_comercial')
+            ->paginate()
+            );
     }
 
     /**

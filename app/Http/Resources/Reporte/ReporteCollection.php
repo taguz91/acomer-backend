@@ -8,6 +8,7 @@ use App\Http\Resources\Reporte\ReporteResource;
 
 class ReporteCollection extends ResourceCollection
 {
+    use NewCollectionResponse;
     /**
      * Transform the resource collection into an array.
      *
@@ -16,7 +17,7 @@ class ReporteCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return $this->NewCollectionResponse(
+        return $this->newCollectionResponse(
             ReporteResource::collection($this->collection)
         );
     }

@@ -19,10 +19,12 @@ class CategoriaController extends Controller
     {
         return new CategoriaCollection(
             Categoria::select([
-                'id_categoria',
+                'id',
                 'nombre',
-                'numero_platos'
-            ])->paginate()
+                'numero_platos',
+                'id_restaurante'
+            ])->with('restaurante:id,nombre_comercial')
+            ->paginate()
         ); 
     }
 
