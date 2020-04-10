@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Restaurante;
+namespace App\Http\Resources\Plato;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class RestauranteNombreResource extends JsonResource
+class PlatoTblResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,8 +15,8 @@ class RestauranteNombreResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id_restaurante' => $this->id,
-            'nombre_restaurante' => $this->nombre_comercial
+            'id_plato' => $this->id,
+            'nombre' => $this->nombre
         ];
     }
 }

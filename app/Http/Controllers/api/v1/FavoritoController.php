@@ -21,7 +21,9 @@ class FavoritoController extends Controller
             Favorito::select([
                 'id_plato',
                 'id_cliente'
-            ])->paginate()
+            ])->with('plato:id,nombre')
+            ->with('cliente:id,nombre,apellido,identificacion,telefono')
+            ->paginate()
         );
     }
 

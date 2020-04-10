@@ -19,10 +19,12 @@ class PlatoController extends Controller
     {
         return new PlatoCollection(
             Plato::select([
+                'id_restaurante',
                 'nombre',
                 'precio',
                 'ingredientes',
-            ])->paginate()
+            ])->with('restaurante:id,nombre_comercial')
+            ->paginate()
         );
     }
 

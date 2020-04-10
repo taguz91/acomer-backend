@@ -18,8 +18,8 @@ class EmpleadoResource extends JsonResource
     {
         return [
             'id_empleado' => $this->id,
-            'id_restaurante' => $this->id_restaurante,
-            'id_usuario' => $this->id_usuario,
+            //'id_restaurante' => $this->id_restaurante,
+            //'id_usuario' => $this->id_usuario,
             'nombre' => $this->nombre,
             'apellido' => $this->apellido,
             'identificacion' => $this->identificacion,

@@ -15,7 +15,7 @@ class EmpleadoUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,8 +25,7 @@ class EmpleadoUpdateRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
-    }
+        return [];
+    }  
+        
 }

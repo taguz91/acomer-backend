@@ -4,6 +4,8 @@ namespace App\Http\Resources\EncabezadoFactura;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\Restaurante\RestauranteNombreResource;
+use App\Http\Resources\Cliente\ClienteTblResource;
+use App\Http\Resources\Pedido\PedidoTblResource;
 
 class EncabezadoFacturaResource extends JsonResource
 {
@@ -25,7 +27,15 @@ class EncabezadoFacturaResource extends JsonResource
             $this->mergeWhen(
                 $this->resource->relationLoaded('restaurante') && !is_null($this->restaurante),
                 new RestauranteNombreResource($this->restaurante)
-            )
+            ),
+            $this->mergeWhen(
+                $this->resource->relationLoaded('cliente') && !is_null($this->cliente),
+                new ClienteTblResource($this->cliente)
+            ),
+            $this->mergeWhen(
+                $this->resource->relationLoaded('pedido') && !is_null($this->pedido),
+                new PedidoTblResource($this->pedido)
+            ),
         ];
     }
 }

@@ -20,13 +20,17 @@ class EncabezadoFacturaController extends Controller
         return new EncabezadoFacturaCollection(
             EncabezadoFactura::select([
                 'id_restaurante',
+                'id_cliente',
+                'id_pedido',
                 'nombre',
                 'direccion',
                 'telefono',
                 'identificacion',
                 'fecha',
                 'total',
-            ])->with('restaurante:nombre_comercial')
+            ])->with('restaurante:id,nombre_comercial')
+            ->with('cliente:id,nombre,apellido,identificacion,telefono')
+            ->with('pedido:id,platos')
             ->paginate()
         );
     }
