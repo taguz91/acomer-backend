@@ -15,7 +15,7 @@ class SucursalCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;//AQUI TENGO QUE CAMBIAR A TRUE???
+        return true;
     }
 
     /**
@@ -30,9 +30,8 @@ class SucursalCreateRequest extends FormRequest
             'horario_atencion' => 'required', //Definir bien
             'numero' => 'required|max:20|min:1',
             'direccion' => 'required|max:100',
-            //Definir si van o no
-            //'latitud' => 'required', 
-            //'longitud' => 'required'
+            'latitud' => 'required', 
+            'longitud' => 'required'
         ];
     }
 

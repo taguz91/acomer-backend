@@ -15,7 +15,7 @@ class PromocionCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -33,6 +33,30 @@ class PromocionCreateRequest extends FormRequest
             'precio' => 'required',
             'descuento' => 'required|integer',
             'extra' => 'required|json'
+        ];
+    }
+
+    public function attributes(){
+        return [
+            'id_fk' => 'id',
+            'tipo_promocion' => 'Tipo Promocion',
+            'fecha_inicio' => 'Fecha Inicio',
+            'fecha_fin' => 'Fecha Fin',
+            'precio' => 'Precio',
+            'descuento' => 'Descuento',
+            'extra' => 'Extra'
+        ];
+    }
+
+    public function filters(){
+        return [
+            'id_fk' => 'trim|escape',
+            'tipo_promocion' => 'trim|capitalize|escape',
+            'fecha_inicio' => 'trim|escape',
+            'fecha_fin' => 'trim|escape',
+            'precio' => 'trim|escape',
+            'descuento' => 'trim|escape',
+            'extra' => 'trim|escape'
         ];
     }
 }

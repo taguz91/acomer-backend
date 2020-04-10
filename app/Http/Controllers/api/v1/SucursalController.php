@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Sucursal\SucursalCollection;
 use App\Http\Requests\Sucursal\SucursalCreateRequest;
+use App\Http\Requests\Sucursal\SucursalUpdateRequest;
 
 class SucursalController extends Controller
 {
@@ -23,7 +24,9 @@ class SucursalController extends Controller
                 'horario_atencion',
                 'numero',
                 'direccion',
-            ])->with('restaurante:nombre_comercial')
+                'latitud',
+                'longitud',
+            ])->with('restaurante:id,nombre_comercial')
             ->paginate()
         );
     }
@@ -59,7 +62,7 @@ class SucursalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SucursalUpdateRequest $request, $id)
     {
         $suc = Sucursal::findOrFail($id);
         return $this->updateObject($suc, $request);

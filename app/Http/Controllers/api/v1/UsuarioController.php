@@ -5,7 +5,9 @@ namespace App\Http\Controllers\api\v1;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Usuario\UsuarioCollection;
 use App\Http\Requests\Usuario\UsuarioCreateRequest;
+use App\Http\Requests\Usuario\UsuarioUpdateRequest;
 
 class UsuarioController extends Controller
 {
@@ -16,7 +18,19 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        //
+        return new UsuarioCollection(
+            Usuario::select([
+                'id',
+                'nombre',
+                'clave',
+                'correo',
+                'tipo_usuario',
+                'ultimo_login',
+                'ultimo_cambio_clave',
+                'intentos_login',
+                'numero_logins',
+            ])->paginate()
+        );
     }
 
     /**
@@ -50,7 +64,7 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UsuarioUpdateRequest $request, $id)
     {
         $usu = Usuario::findOrFail($id);
         return $this->updateObject($usu, $request);

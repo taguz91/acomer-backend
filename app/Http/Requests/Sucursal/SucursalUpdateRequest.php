@@ -15,7 +15,7 @@ class SucursalUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,8 +25,30 @@ class SucursalUpdateRequest extends FormRequest
      */
     public function rules()
     {
+        return [ 
+            //'id_restaurante' => 'required|max:50',
+            'horario_atencion' => 'required', //Definir bien
+            'numero' => 'required|max:20|min:1',
+            'direccion' => 'required|max:100',
+            'latitud' => 'required', 
+            'longitud' => 'required'
+        ];
+    }
+
+    public function attributes(){
         return [
-            //
+            'horario_atencion' => 'Horario Atención',
+            'numero' => 'Número de restaurante',
+            'direccion' => 'Dirección'
+        ];
+    }
+
+    public function filters(){
+        return [
+            //'id_restaurante' => 'trim|escape',
+            'horario_atencion' => 'trim|escape',
+            'numero' => 'trim|escape',
+            'direccion' => 'trim|capitalize|escape'
         ];
     }
 }

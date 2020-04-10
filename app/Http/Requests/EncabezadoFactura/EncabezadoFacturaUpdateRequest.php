@@ -15,7 +15,7 @@ class EncabezadoFacturaUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,7 +26,28 @@ class EncabezadoFacturaUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nombre' => 'required|max:100|min:3',
+            'direccion' => 'required|max:150|min:5',
+            'telefono' => 'required|max:20|min:7',
+            'identificacion' => 'required|max:20|min:8'
+        ];
+    }
+
+    public function attributes(){
+        return [
+        'nombre' => 'Nombre',
+        'direccion' => 'Dirección',
+        'telefono' => 'Teléfono',
+        'identificacion' => 'Identificación'
+        ];
+    }
+
+    public function filters(){
+        return [
+            'nombre' => 'trim|capitalize|escape',
+            'direccion' => 'trim|capitalize|escape',
+            'telefono' => 'trim|escape',
+            'identificacion' => 'trim|escape'
         ];
     }
 }

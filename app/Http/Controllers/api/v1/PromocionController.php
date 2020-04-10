@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Promocion\PromocionCollection;
 use App\Http\Requests\Promocion\PromocionCreateRequest;
+use App\Http\Requests\Promocion\PromocionUpdateRequest;
 
 class PromocionController extends Controller
 {
@@ -19,12 +20,15 @@ class PromocionController extends Controller
     {
         return new PromocionCollection(
             Promocion::select([
+                'id_restaurante',
+                'id_fk',
                 'fecha_inicio',
                 'fecha_fin',
                 'precio',
                 'descuento',
-                'extra'
-            ])->paginate()
+                'extra',
+            ])->with('restaurante:id,nombre_comercial')
+            ->paginate()
         );
     }
 
@@ -59,7 +63,7 @@ class PromocionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PromocionUpdateRequest $request, $id)
     {
         $prom = Promocion::findOrFail($id);
         return $this->updateObject($prom, $request);

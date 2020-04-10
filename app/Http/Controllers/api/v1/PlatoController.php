@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Plato\PlatoCollection;
 use App\Http\Requests\Plato\PlatoCreateRequest;
+use App\Http\Requests\Plato\PlatoUpdateRequest;
 
 class PlatoController extends Controller
 {
@@ -59,7 +60,7 @@ class PlatoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PlatoUpdateRequest $request, $id)
     {
         $pla = Plato::findOrFail($id);
         return $this->updateObject($pla, $request);

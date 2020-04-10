@@ -15,7 +15,7 @@ class UsuarioUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,7 +26,25 @@ class UsuarioUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nombre' => 'required|max:50|min:3',
+            'clave' => 'required|max:50',
+            'correo' => 'required|max:100'
+        ];
+    }
+
+    public function attributes(){
+        return [
+            'nombre' => 'Nombre',
+            'clave' => 'Clave',
+            'correo' => 'Correo' 
+        ];
+    }
+
+    public function filters(){
+        return [
+            'nombre' => 'trim|capitalize|escape',
+            'clave' => 'trim|capitalize|escape',
+            'correo' => 'trim|capitalize|escape'
         ];
     }
 }

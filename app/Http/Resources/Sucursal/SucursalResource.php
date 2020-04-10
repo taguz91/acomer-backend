@@ -17,7 +17,7 @@ class SucursalResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id_restaurante' => $this->id_restaurante,
+            //'id_restaurante' => $this->id_restaurante,
             'horario_atencion' => $this->horario_atencion,
             'numero' => $this->numero,
             'direccion' => $this->direccion,

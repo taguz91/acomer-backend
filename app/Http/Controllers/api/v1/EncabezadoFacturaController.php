@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\EncabezadoFactura\EncabezadoFacturaCollection;
 use App\Http\Requests\EncabezadoFactura\EncabezadoFacturaCreateRequest;
+use App\Http\Requests\EncabezadoFactura\EncabezadoFacturaUpdateRequest;
+
 
 class EncabezadoFacturaController extends Controller
 {
@@ -66,7 +68,7 @@ class EncabezadoFacturaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EncabezadoFacturaUpdateRequest $request, $id)
     {
         $encfac = EncabezadoFactura::findOrFail($id);
         return $this->updateObject($encfac, $request);

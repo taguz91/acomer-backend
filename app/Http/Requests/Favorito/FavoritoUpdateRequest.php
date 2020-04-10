@@ -15,7 +15,7 @@ class FavoritoUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,7 +26,25 @@ class FavoritoUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id_plato' => 'required'
+        ];
+    }
+
+    public function messages(){
+        return [
+            'id_plato.required' => 'El :attribute es obligatorio' 
+        ];
+    }
+
+    public function attributes(){
+        return [
+            'id_plato' => 'Código Plato'
+        ];
+    }
+
+    public function filters(){
+        return [
+            'id_plato' => 'trim|escape'
         ];
     }
 }

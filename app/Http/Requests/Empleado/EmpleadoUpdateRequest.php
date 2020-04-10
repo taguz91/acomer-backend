@@ -25,7 +25,27 @@ class EmpleadoUpdateRequest extends FormRequest
      */
     public function rules()
     {
-        return [];
-    }  
+        return [
+            'nombre' => 'required|max:100|min:3',
+            'apellido' => 'required|max:100|min:3',
+            'identificacion' => 'required|max:20|min:8'
+        ];
+    }
+
+    public function attributes(){
+        return [
+        'nombre' => 'Nombre',
+        'apellido' => 'Apellido',
+        'identificacion' => 'Identificación'
+        ];
+    }
+
+    public function filters(){
+        return [
+            'nombre' => 'trim|capitalize|escape',
+            'apellido'  => 'trim|capitalize|escape',
+            'identificacion'  => 'trim|capitalize|escape'
+        ];
+    } 
         
 }
