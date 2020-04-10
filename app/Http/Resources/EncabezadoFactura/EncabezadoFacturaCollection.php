@@ -8,7 +8,7 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class EncabezadoFacturaCollection extends ResourceCollection
 {
-    use NewCollectionResource;
+    use NewCollectionResponse;
     /**
      * Transform the resource collection into an array.
      *

@@ -17,6 +17,7 @@ class RestauranteNombreResource extends JsonResource
         return [
             'id_restaurante' => $this->id,
             'nombre_restaurante' => $this->nombre_comercial
+
         ];
     }
 }

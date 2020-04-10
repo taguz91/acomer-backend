@@ -19,6 +19,7 @@ class EmpleadoController extends Controller
     {
         return new EmpleadoCollection(
             Empleado::select([
+
                 'id',
                 'id_restaurante',
                 'id_usuario',
@@ -28,6 +29,7 @@ class EmpleadoController extends Controller
                 'id_rol',
             ])->with('usuario:id,nombre,correo')
             ->with('restaurante:id,nombre_comercial')
+
             ->paginate()
         );
     }

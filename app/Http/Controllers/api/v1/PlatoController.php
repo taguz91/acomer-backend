@@ -22,7 +22,6 @@ class PlatoController extends Controller
                 'nombre',
                 'precio',
                 'ingredientes',
-                'url_imagen'
             ])->paginate()
         );
     }

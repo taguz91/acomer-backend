@@ -19,10 +19,12 @@ class SucursalController extends Controller
     {
         return new SucursalCollection(
             Sucursal::select([
+                'id_restaurante',
                 'horario_atencion',
                 'numero',
-                'direccion'
-            ])->paginate()
+                'direccion',
+            ])->with('restaurante:nombre_comercial')
+            ->paginate()
         );
     }
 

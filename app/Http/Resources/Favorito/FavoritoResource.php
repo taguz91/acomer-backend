@@ -15,7 +15,8 @@ class FavoritoResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id_plato' => $this->id_plato
+            'id_plato' => $this->id_plato,
+            'id_cliente' => $this->id_cliente
         ];
     }
 }
