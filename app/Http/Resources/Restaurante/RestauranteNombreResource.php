@@ -15,6 +15,7 @@ class RestauranteNombreResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id_restaurante' => $this->id,
             'nombre_restaurante' => $this->nombre_comercial
         ];
     }
