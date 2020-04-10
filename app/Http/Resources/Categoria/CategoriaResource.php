@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Categoria;
 
+use App\Http\Resources\Restaurante\RestauranteNombreResource;
 use App\Http\Resources\Restaurante\RestauranteResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -22,7 +23,7 @@ class CategoriaResource extends JsonResource
             'numero_platos'=>$this->numero_platos,
             $this->mergeWhen(
                 $this->resource->relationLoaded('restaurante') && !is_null($this->restaurante),
-                new RestauranteResource($this->restaurante)
+                new RestauranteNombreResource   ($this->restaurante)
             )
         ];
     }

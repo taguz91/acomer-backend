@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pedido;
 use App\Http\Requests\Pedido\PedidoCreateRequest;
+use App\Http\Requests\Pedido\PedidoUpdateRequest;
 use App\Http\Resources\Pedido\PedidoCollection;
 
 class PedidoController extends Controller
@@ -25,7 +26,7 @@ class PedidoController extends Controller
                 'id_mesa',
                 'platos',
                 'notas',
-            ])->with('mesa:id,numero,capacidad')
+            ])->with('mesa:id,numero')
             ->with('empleado:id,identificacion,nombre')
             ->paginate()
 
@@ -63,7 +64,7 @@ class PedidoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PedidoUpdateRequest $request, $id)
     {
         $pedido = Pedido::findOrFail($id);
         return $this->updateObject($pedido, $request);

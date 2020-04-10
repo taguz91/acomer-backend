@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Mesa;
 use App\Http\Requests\Mesa\MesaCreateRequest;
+use App\Http\Requests\Mesa\MesaUpdateRequest;
 use App\Http\Resources\Mesa\MesaCollection;
 
 class MesaController extends Controller
@@ -60,7 +61,7 @@ class MesaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MesaUpdateRequest $request, $id)
     {
         $mesa = Mesa::findOrFail($id);
         return $this->updateObject($mesa, $request);

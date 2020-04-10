@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\MenuDia;
 use App\Http\Requests\MenuDia\MenuDiaCreateRequest;
+use App\Http\Requests\MenuDia\MenuDiaUpdateRequest;
 use App\Http\Resources\MenuDia\MenuDiaCollection;
 
 class MenuDiaController extends Controller
@@ -61,7 +62,7 @@ class MenuDiaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MenuDiaUpdateRequest $request, $id)
     {
         $menudia = MenuDia::findOrFail($id);
         return $this->updateObject($menudia, $request);

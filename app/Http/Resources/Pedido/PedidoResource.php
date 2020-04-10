@@ -3,7 +3,9 @@
 namespace App\Http\Resources\Pedido;
 
 use App\Http\Resources\Empleado\EmpleadoResource;
+use App\Http\Resources\Empleado\EmpleadoTblResource;
 use App\Http\Resources\Mesa\MesaResource;
+use App\Http\Resources\Mesa\MesaTblResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class PedidoResource extends JsonResource
@@ -25,11 +27,11 @@ class PedidoResource extends JsonResource
             'notas'=>$this->notas,
             $this->mergeWhen(
                 $this->resource->relationLoaded('mesa') && !is_null($this->mesa),
-                new MesaResource($this->mesa)
+                new MesaTblResource($this->mesa)
             ),
             $this->mergeWhen(
                 $this->resource->relationLoaded('empleado') && !is_null($this->empleado),
-                new EmpleadoResource($this->empleado)
+                new EmpleadoTblResource($this->empleado)
             )
 
         ];

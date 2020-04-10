@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Reporte;
 use App\Http\Requests\Reporte\ReporteCreateRequest;
+use App\Http\Requests\Reporte\ReporteUpdateRequest;
 use App\Http\Resources\Reporte\ReporteCollection;
 
 class ReporteController extends Controller
@@ -64,7 +65,7 @@ class ReporteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ReporteUpdateRequest $request, $id)
     {
         $reporte = Reporte::findOrFail($id);
         return $this->updateObject($reporte, $request);
