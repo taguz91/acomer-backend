@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Categoria\CategoriaCollection;
 use App\Http\Requests\Categoria\CategoriaCreateRequest;
+use App\Http\Requests\Categoria\CategoriaUpdateRequest;
 
 class CategoriaController extends Controller
 {
@@ -59,7 +60,7 @@ class CategoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoriaUpdateRequest $request, $id)
     {
         $categoria = Categoria::findOrFail($id);
         return $this->updateObject($categoria, $request);

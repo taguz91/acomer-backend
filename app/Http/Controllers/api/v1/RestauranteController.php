@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Restaurante\RestauranteCollection;
 use App\Http\Requests\Restaurante\RestauranteCreateRequest;
+use App\Http\Requests\Restaurante\RestauranteUpdateRequest;
 
 class RestauranteController extends Controller
 {
@@ -66,7 +67,7 @@ class RestauranteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RestauranteUpdateRequest $request, $id)
     {
         $restaurante = Restaurante::findOrFail($id);
         return $this->updateObject($restaurante, $request);

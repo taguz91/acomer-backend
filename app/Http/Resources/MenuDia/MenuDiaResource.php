@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\MenuDia;
 
+use App\Http\Resources\Restaurante\RestauranteNombreResource;
 use App\Http\Resources\Restaurante\RestauranteResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -23,7 +24,7 @@ class MenuDiaResource extends JsonResource
             'fecha_fin' => $this->fecha_fin,
             $this->mergeWhen(
                 $this->resource->relationLoaded('restaurante') && !is_null($this->restaurante),
-                new RestauranteResource($this->restaurante)
+                new RestauranteNombreResource($this->restaurante)
             )
         ];
     }

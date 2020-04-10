@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Calificacion\CalificacionCollection;
 use App\Http\Requests\Calificacion\CalificacionCreateRequest;
+use App\Http\Requests\Calificacion\CalificacionUpdateRequest;
 
 class CalificacionController extends Controller
 {
@@ -61,7 +62,7 @@ class CalificacionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CalificacionUpdateRequest $request, $id)
     {
         $calificacion = Calificacion::findOrFail($id);
         return $this->updateObject($calificacion, $request);
