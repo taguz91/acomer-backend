@@ -88,9 +88,9 @@ class Restaurante extends Model
         return $this->hasMany('App\Models\Surcursal', 'id_restaurante');
     }
 
-    public function sugerencias()
+    public function productos()
     {
-        return $this->hasMany('App\Models\Sugerencia', 'id_restaurante');
+        return $this->hasMany('App\Models\Producto', 'id_restaurante');
     }
 
     public function calificaciones()

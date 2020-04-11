@@ -23,8 +23,10 @@ class ProductoController extends Controller
                 'id',
                 'nombre',
                 'stock',
-                'precio'
-            ])->paginate()
+                'precio',
+                'id_restaurante'
+            ])->with('restaurante:id,nombre_comercial')
+            ->paginate()
         );
     }
 

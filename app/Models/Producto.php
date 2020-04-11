@@ -24,4 +24,9 @@ class Producto extends Model
         return $this->belogsTo('App\Models\Categoria', 'id_categoria');
     }
 
+    public function restaurante()
+    {
+        return $this->hasOne('App\Models\Restaurante', 'id', 'id_restaurante');
+    }
+
 }
