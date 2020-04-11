@@ -17,10 +17,8 @@ class ReservaCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return [
-            $this->newCollectionResponse(
-                ReservaResource::collection($this->collection),
-            )
-        ];
+        return $this->newCollectionResponse(
+            ReservaResource::collection($this->collection),
+        );
     }
 }
