@@ -77,4 +77,16 @@ class PlatoController extends Controller
         $pla = Plato::findOrFail($id);
         return $this->deleteObject($pla);
     }
+
+    public function restaurante($id) {
+        return new PlatoCollection(
+            Plato::select([
+                'id_restaurante',
+                'nombre',
+                'precio',
+                'ingredientes',
+            ])->where('id_restaurante', '=', $id)
+            ->paginate()
+        );
+    }
 }

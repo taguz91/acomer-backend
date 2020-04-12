@@ -44,5 +44,8 @@ Route::namespace('api\v1')->group(function () {
         Route::apiResource('producto', 'ProductoController');
         Route::apiResource('url', 'UrlController');
         Route::apiResource('rol', 'RolController');
+        // Rutas para restaurante 
+        Route::get('plato/restaurante/{id}', 'PlatoController@restaurante');
+        Route::get('producto/restaurante/{id}', 'ProductoController@restaurante');
     });
 });

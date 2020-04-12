@@ -78,4 +78,18 @@ class ProductoController extends Controller
         $pro = Producto::findOrFail($id);
         return $this->deleteObject($pro);
     }
+
+    public function restaurante($id) {
+        return new ProductoCollection(
+            Producto::select([
+                'id',
+                'nombre',
+                'stock',
+                'precio',
+                'id_restaurante'
+            ])->where('id_restaurante', '=', $id)
+            ->paginate()
+        );
+    }
+
 }
