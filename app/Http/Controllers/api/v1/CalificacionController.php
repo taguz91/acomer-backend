@@ -79,4 +79,17 @@ class CalificacionController extends Controller
         $calificacion = Calificacion::findOrFail($id);
         return $this->deleteObject($calificacion);
     }
+
+    public function restaurante($id) {
+            return new CalificacionCollection(
+                Calificacion::select([
+                    'id',
+                    'id_fk',
+                    'calificacion',
+                    'tipo_calificacion',
+                    'id_cliente'
+                ])->where('id_restaurante', '=', $id)
+                ->paginate()
+            ); 
+    }
 }
