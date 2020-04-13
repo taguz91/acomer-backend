@@ -80,4 +80,20 @@ class PromocionController extends Controller
         $prom = Promocion::findOrFail($id);
         return $this->deleteObject($prom);
     }
+
+    public function restaurante($id){
+        return new PromocionCollection(
+            Promocion::select([
+                'id_restaurante',
+                'id_fk',
+                'fecha_inicio',
+                'fecha_fin',
+                'precio',
+                'descuento',
+                'extra',
+            ])->with('restaurante:id,nombre_comercial')
+            ->where('id_restaurante', '=', $id)
+            ->paginate()
+        );
+    }
 }
