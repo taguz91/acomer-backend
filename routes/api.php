@@ -47,5 +47,9 @@ Route::namespace('api\v1')->group(function () {
         // Rutas para restaurante 
         Route::get('plato/restaurante/{id}', 'PlatoController@restaurante');
         Route::get('producto/restaurante/{id}', 'ProductoController@restaurante');
+        Route::get('empleado/restaurante/{id}', 'EmpleadoController@restaurante');
+        Route::get('sucursal/restaurante/{id}', 'SucursalController@restaurante');
+        Route::get('promocion/restaurante/{id}', 'PromocionController@restaurante');
+        Route::get('encabezado/factura/restaurante/{id}', 'EncabezadoFacturaController@restaurante');
     });
 });
