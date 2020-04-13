@@ -30,7 +30,7 @@ class ProductoUpdateRequest extends FormRequest
             'stock' => 'required|integer',
             'precio' => 'required|digits_between:0,999.99',
             'id_categoria' => 'required|integer',
-            'url_image' => 'url'
+            'url_imagen' => 'required'
         ];
     }
 
