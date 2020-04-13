@@ -79,4 +79,19 @@ class SucursalController extends Controller
         $suc = Sucursal::findOrFail($id);
         return $this->deleteObject($suc);
     }
+
+    public function restaurante($id){
+        return new SucursalCollection(
+            Sucursal::select([
+                'id_restaurante',
+                'horario_atencion',
+                'numero',
+                'direccion',
+                'latitud',
+                'longitud',
+            ])->with('restaurante:id,nombre_comercial')
+            ->where('id_restaurante', '=', $id)
+            ->paginate()
+        );
+    }
 }

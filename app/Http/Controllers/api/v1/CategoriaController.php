@@ -77,4 +77,16 @@ class CategoriaController extends Controller
         $categoria = Categoria::findOrFail($id);
         return $this->deleteObject($categoria);
     }
+
+    public function restaurante($id) {
+         return new CategoriaCollection(
+            Categoria::select([
+                'id',
+                'nombre',
+                'numero_platos',
+                'id_restaurante'
+            ])->where('id_restaurante', '=', $id)
+            ->paginate()
+        ); 
+}
 }

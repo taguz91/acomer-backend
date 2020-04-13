@@ -81,4 +81,21 @@ class EmpleadoController extends Controller
         $emp = Empleado::findOrFail($id);
         return $this->deleteObject($emp);
     }
+
+    public function restaurante($id){
+        return new EmpleadoCollection(
+            Empleado::select([
+                'id',
+                'id_restaurante',
+                'id_usuario',
+                'nombre',
+                'apellido',
+                'identificacion',
+                'id_rol',
+            ])->with('usuario:id,nombre,correo')
+            ->with('restaurante:id,nombre_comercial')
+            ->where('id_restaurante', '=', $id)
+            ->paginate()
+        );
+    }
 }

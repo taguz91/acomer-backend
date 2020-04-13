@@ -82,4 +82,17 @@ class ReporteController extends Controller
         $reporte = Reporte::findOrFail($id);
         return $this->deleteObject($reporte);
     }
+
+    public function restaurante($id) {
+        return new ReporteCollection(
+            Reporte::select([
+                'id',
+                'reporte',
+                'fecha',
+                'nombre',
+                 'id_restaurante'
+            ])->where('id_restaurante', '=', $id)
+            ->paginate()
+            );
+    }
 }

@@ -79,4 +79,18 @@ class MenuDiaController extends Controller
         $menudia = MenuDia::findOrFail($id);
         return $this->deleteObject($menudia);
     }
+    public function restaurante($id) {
+        
+
+     return new MenuDiaCollection(
+        MenuDia::select([
+            'id',
+            'descripcion',
+            'precio',
+            'id_restaurante'
+            
+        ])->where('id_restaurante', '=', $id)
+        ->paginate()
+    );
+ }
 }

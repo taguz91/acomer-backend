@@ -78,4 +78,18 @@ class MesaController extends Controller
         $mesa = Mesa::findOrFail($id);
         return $this->deleteObject($mesa);
     }
+
+    public function restaurante($id) {
+        
+       return new MesaCollection(
+        Mesa::select([
+            'id',
+            'numero',
+            'capacidad',
+            'descripcion',
+            'id_restaurante'
+        ])->where('id_restaurante', '=', $id)
+        ->paginate()
+        );
+    }
 }
