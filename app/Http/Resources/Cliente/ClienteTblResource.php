@@ -16,10 +16,10 @@ class ClienteTblResource extends JsonResource
     {
         return [
             'id_cliente' => $this->id,
-            'nombre' => $this->nombre,
-            'apellido' => $this->apellido,
-            'identificacion' => $this->identificacion,
-            'telefono' => $this->telefono
+            'nombre_cli' => $this->nombre,
+            'apellido_cli' => $this->apellido,
+            'identificacion_cli' => $this->identificacion,
+            'telefono_cli' => $this->telefono
         ];
     }
 }

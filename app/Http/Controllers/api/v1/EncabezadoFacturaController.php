@@ -92,14 +92,14 @@ class EncabezadoFacturaController extends Controller
                 'id_restaurante',
                 'id_cliente',
                 'id_pedido',
-                'nombre',
+                'nombre_encfac',
                 'direccion',
                 'telefono',
                 'identificacion',
                 'fecha',
                 'total',
             ])->with('restaurante:id,nombre_comercial')
-            ->with('cliente:id,nombre,apellido,identificacion,telefono')
+            ->with('cliente:id,nombre_cli,apellido_cli,identificacion_cli,telefono_cli')
             ->with('pedido:id,platos')
             ->where('id_restaurante', '=', $id)
             ->paginate()
