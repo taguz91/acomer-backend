@@ -33,7 +33,7 @@ $factory->define(Menu::class, function (Faker $faker) {
     }
 
     return [
-        'id_restaurante' => $faker->numberBetween(1, 500),
+        'id_restaurante' => $faker->numberBetween(1, 20),
         'nombre' => $faker->sentence(3),
         'mes_inicio' => $faker->month . '/' . $faker->dayOfMonth,
         'mes_fin' => $faker->month . '/' . $faker->dayOfMonth,

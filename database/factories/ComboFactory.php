@@ -37,7 +37,7 @@ function getJSONPlatos($faker) {
 
 $factory->define(Combo::class, function (Faker $faker) {
     return [
-        'id_restaurante' => $faker->numberBetween(1, 500),
+        'id_restaurante' => $faker->numberBetween(1, 20),
         'nombre' => $faker->sentence(4),
         'platos' => json_encode(getJSONPlatos($faker)),
         'precio_final' => $faker->randomFloat,

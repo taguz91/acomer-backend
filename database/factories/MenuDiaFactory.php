@@ -37,7 +37,7 @@ function getJSONMenuDia($faker) {
 
 $factory->define(MenuDia::class, function (Faker $faker) {
     return [
-        'id_restaurante' => $faker->numberBetween(1, 500),
+        'id_restaurante' => $faker->numberBetween(1, 20),
         'descripcion' => $faker->sentence(5),
         'precio' => $faker->randomFloat(2),
         'menu_dia' => json_encode(getJSONMenuDia($faker)),

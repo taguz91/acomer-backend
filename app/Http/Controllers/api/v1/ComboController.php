@@ -77,4 +77,17 @@ class ComboController extends Controller
         $com = Combo::findOrFail($id);
         return $this->deleteObject($com);
     }
+
+    public function restaurante($id) {
+        return new ComboCollection(
+            Combo::select([
+                'id',
+                'nombre',
+                'platos',
+                'precio_final',
+                'extra'
+            ])->where('id_restaurante', $id)
+            ->paginate()
+        );
+    }
 }

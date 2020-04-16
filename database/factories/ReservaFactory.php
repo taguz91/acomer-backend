@@ -63,7 +63,7 @@ function getPlatosPedido($faker) {
 $factory->define(Reserva::class, function (Faker $faker) {
     return [
         'id_cliente' => $faker->numberBetween(1, 500),
-        'id_restaurante' => $faker->numberBetween(1, 500),
+        'id_restaurante' => $faker->numberBetween(1, 20),
         'fecha_reserva' => $faker->dateTime,
         'numero_personas' => $faker->numberBetween(1, 15),
         'platos' => json_encode(getPlatosPedido($faker)),

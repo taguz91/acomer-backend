@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Sucursal::class, function (Faker $faker) {
     return [
-        'id_restaurante' => $faker->numberBetween(1, 500),
+        'id_restaurante' => $faker->numberBetween(1, 20),
         'horario_atencion' => '{"Lunes" : "08h00 - 18h00"}',
         'numero' => $faker->numberBetween(1, 5),
         'direccion' => $faker->address,

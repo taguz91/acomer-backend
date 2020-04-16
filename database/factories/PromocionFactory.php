@@ -25,7 +25,7 @@ function getJSONExtraPromo($faker) {
 
 $factory->define(Promocion::class, function (Faker $faker) {
     return [
-        'id_restaurante' => $faker->numberBetween(1, 500),
+        'id_restaurante' => $faker->numberBetween(1, 20),
         'id_fk' => $faker->numberBetween(1, 500),
         'tipo_promocion' => $faker->numberBetween(1, 2),
         'fecha_inicio' => $faker->dateTime,

@@ -78,4 +78,17 @@ class MenuController extends Controller
         $menu = Menu::findOrFail($id);
         return $this->deleteObject($menu);
     }
+
+    public function restaurante($id) {
+        return new MenuCollection(
+            Menu::select([
+                'id',
+                'created_at',
+                'nombre',
+                'mes_inicio',
+                'mes_fin'
+            ])->where('id_restaurante', $id)
+            ->paginate()
+        );
+    }
 }
