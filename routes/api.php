@@ -51,11 +51,11 @@ Route::namespace('api\v1')->group(function () {
         Route::get('combo/restaurante/{id}', 'ComboController@restaurante');
 
         Route::get('reporte/restaurante/{id}','ReporteController@restaurante');
-        Route::get('calificacion/restaurante/{id}','ReporteController@restaurante');
-        Route::get('categoria/restaurante/{id}','ReporteController@restaurante');
-        Route::get('pedido/restaurante/{id}','ReporteController@restaurante');
-        Route::get('menudia/restaurante/{id}','ReporteController@restaurante');
-        Route::get('mesa/restaurante/{id}','ReporteController@restaurante');
+        Route::get('calificacion/restaurante/{id}','CalificacionController@restaurante');
+        Route::get('categoria/restaurante/{id}','CategoriaController@restaurante');
+        Route::get('pedido/restaurante/{id}','PedidoController@restaurante');
+        Route::get('menudia/restaurante/{id}','MenuController@restaurante');
+        Route::get('mesa/restaurante/{id}','MesaController@restaurante');
 
         Route::get('empleado/restaurante/{id}', 'EmpleadoController@restaurante');
         Route::get('sucursal/restaurante/{id}', 'SucursalController@restaurante');

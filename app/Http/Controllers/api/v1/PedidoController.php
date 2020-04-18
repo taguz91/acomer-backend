@@ -83,20 +83,16 @@ class PedidoController extends Controller
     }
 
     public function restaurante($id) {
-        
-
        return new PedidoCollection(
-        Pedido::select([
-            'id',
-            'id_restaurante',
-            'id_empleado',
-            'id_mesa',
-            'platos',
-            'notas',
-        ])->where('id_restaurante', '=', $id)
-        ->where('id_restaurante', '=', $id)
-        ->paginate()
-
-    );
-}
+            Pedido::select([
+                'id',
+                'id_restaurante',
+                'id_empleado',
+                'id_mesa',
+                'platos',
+                'notas',
+            ])->where('id_restaurante', '=', $id)
+            ->paginate()
+        );
+    }
 }
