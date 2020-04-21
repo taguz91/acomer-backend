@@ -19,6 +19,7 @@ class EncabezadoFactura extends Model
         'direccion',
         'telefono',
         'identificacion',
+        'id_restaurante'
     ];
 
     public function restaurante(){
