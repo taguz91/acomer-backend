@@ -62,5 +62,7 @@ Route::namespace('api\v1')->group(function () {
         Route::get('promocion/restaurante/{id}', 'PromocionController@restaurante');
         Route::get('encabezado/factura/restaurante/{id}', 'EncabezadoFacturaController@restaurante');
 
+        // Reportes 
+        Route::get('reporte/restaurante/ventas', 'RestauranteController@reporte');
     });
 });

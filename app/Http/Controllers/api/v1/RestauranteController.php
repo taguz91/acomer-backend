@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api\v1;
 
 use App\Models\Restaurante;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Restaurante\RestauranteCollection;
 use App\Http\Requests\Restaurante\RestauranteCreateRequest;
@@ -89,4 +90,20 @@ class RestauranteController extends Controller
         $restaurante = Restaurante::findOrFail($id);
         return $this->deleteObject($restaurante);
     }
+
+    public function reporte() {
+        $res = DB::select(DB::raw('
+            SELECT 
+            count(inicio_suscripcion) as num_suscripciones, 
+            inicio_suscripcion 
+            FROM restaurantes 
+            GROUP BY inicio_suscripcion
+        '));
+        return [
+            'status' => 200,
+            'total' => sizeof($res),
+            'data' => $res,
+        ];
+    }
+
 }
