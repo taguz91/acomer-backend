@@ -24,6 +24,7 @@ class PlatoController extends Controller
                 'nombre',
                 'precio',
                 'ingredientes',
+                'url_imagen'
             ])->with('restaurante:id,nombre_comercial')
             ->paginate()
         );
@@ -85,6 +86,7 @@ class PlatoController extends Controller
                 'nombre',
                 'precio',
                 'ingredientes',
+                'url_imagen'
             ])->where('id_restaurante', '=', $id)
             ->paginate()
         );

@@ -20,6 +20,10 @@ class Usuario extends Model
         'numero_logins',
     ];
 
+    protected $hidden = [
+        'clave'
+    ];
+
     public function historial(){
         return $this->hasMany('App\Models\HistorialUsuario', 'id_usuario');
     }

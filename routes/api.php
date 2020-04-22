@@ -64,5 +64,8 @@ Route::namespace('api\v1')->group(function () {
 
         // Reportes 
         Route::get('reporte/restaurante/ventas', 'RestauranteController@reporte');
+
+        // Extras 
+        Route::post('login', 'UsuarioController@login');
     });
 });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api\v1;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Usuario\LoginRequest;
 use App\Http\Resources\Usuario\UsuarioCollection;
 use App\Http\Requests\Usuario\UsuarioCreateRequest;
 use App\Http\Requests\Usuario\UsuarioUpdateRequest;
@@ -80,5 +81,22 @@ class UsuarioController extends Controller
     {
         $usu = Usuario::findOrFail($id);
         return $this->deleteObject($usu);
+    }
+
+    public function login(LoginRequest $request) {
+        $usu = Usuario::where([
+            ['correo', '=', $request->input('correo')],
+            ['clave', '=', $request->input('password')]
+        ])->first();
+        if (is_null($usu)) {
+            return [
+                'status' => 400,
+                'mensaje' => 'No encontramos el usuario con esas credenciales.'
+            ];
+        }
+        return [
+            'status' => 200,
+            'data' => $usu
+        ];
     }
 }

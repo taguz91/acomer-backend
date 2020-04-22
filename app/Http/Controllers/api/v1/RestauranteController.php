@@ -19,9 +19,6 @@ class RestauranteController extends Controller
      */
     public function index()
     {
-        // return Restaurante::paginate(30); 
-        // Solos los eliminados 
-        // return Restaurante::onlyTrashed()->get();
         return new RestauranteCollection(
             Restaurante::select([
                 'id',
