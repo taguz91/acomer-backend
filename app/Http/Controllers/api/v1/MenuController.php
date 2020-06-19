@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\api\v1;
 
 use App\Models\Menu;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Menu\MenuResource;
 use App\Http\Resources\Menu\MenuCollection;
 use App\Http\Requests\Menu\MenuCreateRequest;
 use App\Http\Requests\Menu\MenuUpdateRequest;

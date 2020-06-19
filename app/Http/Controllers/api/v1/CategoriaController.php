@@ -86,7 +86,7 @@ class CategoriaController extends Controller
                 'numero_platos',
                 'id_restaurante'
             ])->where('id_restaurante', '=', $id)
-            ->paginate()
-        ); 
+            ->get()
+        );
 }
 }

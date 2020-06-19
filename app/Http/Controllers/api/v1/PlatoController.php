@@ -20,6 +20,7 @@ class PlatoController extends Controller
     {
         return new PlatoCollection(
             Plato::select([
+                'id',
                 'id_restaurante',
                 'nombre',
                 'precio',
@@ -50,7 +51,8 @@ class PlatoController extends Controller
      */
     public function show($id)
     {
-        $pla = Plato::findOrFail($id);
+        $pla = Plato::with('restaurante:id,nombre_comercial')
+        ->findOrFail($id);
         return $this->showResponse($pla);
     }
 
@@ -82,6 +84,7 @@ class PlatoController extends Controller
     public function restaurante($id) {
         return new PlatoCollection(
             Plato::select([
+                'id',
                 'id_restaurante',
                 'nombre',
                 'precio',

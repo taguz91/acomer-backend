@@ -16,6 +16,7 @@ class PlatoResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id_plato' => $this->id,
             'nombre' => $this->nombre,
             'precio' => $this->precio,
             'ingredientes' => $this->ingredientes,
