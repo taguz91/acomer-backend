@@ -23,6 +23,10 @@ class MenuDia extends Model
         return json_decode($value, true);
     }
 
+    public function getFechasAttribute($value) {
+        return \json_decode($value, true);
+    }
+
     public function restaurante(){
         return $this->belongsTo('App\Models\Restaurante', 'id_restaurante');
     }

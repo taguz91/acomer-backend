@@ -16,4 +16,18 @@ trait ViewResponse {
     ];
   }
 
+  public function showQuery($res) {
+    if (is_null($res)) {
+      return [
+        'status' => 400,
+        'data' => [],
+        'mensaje' => 'No obtuvimos resultados.'
+      ];
+    }
+    return [
+      'status' => 200,
+      'data' => $res
+    ];
+  }
+
 }

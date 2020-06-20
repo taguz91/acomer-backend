@@ -15,9 +15,7 @@ function getFechas($faker) {
 }
 
 function getJSONFechas($faker) {
-    return [
-        'fechas' => getFechas($faker)
-    ];
+    return getFechas($faker);
 }
 
 function getExtra($faker) {
@@ -30,9 +28,7 @@ function getExtra($faker) {
 }
 
 function getJSONMenuDia($faker) {
-    return [
-        'extra' => getExtra($faker)
-    ];
+    return getExtra($faker);
 }
 
 $factory->define(MenuDia::class, function (Faker $faker) {

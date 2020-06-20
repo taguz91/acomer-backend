@@ -24,9 +24,9 @@ class MenuDiaController extends Controller
                 'descripcion',
                 'precio',
                 'id_restaurante'
-                
+
             ])->with('restaurante:id,nombre_comercial')
-            ->paginate()
+                ->paginate()
         );
     }
 
@@ -40,7 +40,6 @@ class MenuDiaController extends Controller
     {
         $menudia = new MenuDia($request->all());
         return $this->saveObject($menudia);
-        
     }
 
     /**
@@ -79,18 +78,32 @@ class MenuDiaController extends Controller
         $menudia = MenuDia::findOrFail($id);
         return $this->deleteObject($menudia);
     }
-    public function restaurante($id) {
-        
 
-     return new MenuDiaCollection(
-        MenuDia::select([
+    public function restaurante($id)
+    {
+        $res = MenuDia::select([
             'id',
             'descripcion',
             'precio',
-            'id_restaurante'
-            
+            'menu_dia',
+            'fechas'
         ])->where('id_restaurante', '=', $id)
-        ->paginate()
-    );
- }
+        ->get();
+        return $this->showQuery($res);
+    }
+
+    public function getFirstRestaurante($id) 
+    {
+        $res = MenuDia::select([
+            'id',
+            'descripcion',
+            'precio',
+            'menu_dia',
+            'fechas'
+        ])->where('id_restaurante', '=', $id)
+        ->orderBy('created_at', 'DESC')
+        ->first();
+        return $this->showQuery($res);
+    }
+
 }

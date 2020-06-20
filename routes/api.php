@@ -54,7 +54,7 @@ Route::namespace('api\v1')->group(function () {
         Route::get('calificacion/restaurante/{id}','CalificacionController@restaurante');
         Route::get('categoria/restaurante/{id}','CategoriaController@restaurante');
         Route::get('pedido/restaurante/{id}','PedidoController@restaurante');
-        Route::get('menudia/restaurante/{id}','MenuController@restaurante');
+        Route::get('menudia/restaurante/{id}','MenuDiaController@restaurante');
         Route::get('mesa/restaurante/{id}','MesaController@restaurante');
 
         Route::get('empleado/restaurante/{id}', 'EmpleadoController@restaurante');
@@ -67,5 +67,8 @@ Route::namespace('api\v1')->group(function () {
 
         // Extras 
         Route::post('login', 'UsuarioController@login');
+
+        // Especiales 
+        Route::get('menudia/restaurante/first/{id}', 'MenuDiaController@getFirstRestaurante');
     });
 });
